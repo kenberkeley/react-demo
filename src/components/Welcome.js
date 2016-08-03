@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router'
-
 /*
   本组件为欢迎页（首页）
   由于几乎没有交互逻辑
@@ -12,13 +11,13 @@ import { Link } from 'react-router'
  */
 export const Welcome = (props) => (
   <div className="jumbotron">
-    <h1>Welcome to React Demo</h1>
+    <h1>欢迎使用 <br/> React Demo</h1>
     <p>
       <Link
         to="/msg"
         role="button"
         className="btn btn-success btn-lg">
-        Go to Message Board
+        前往留言板 &gt;
       </Link>
     </p>
   </div>

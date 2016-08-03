@@ -5,6 +5,9 @@ import dateTimeFormatter from 'UTIL/dateTimeFormatter'
 import msgService from 'SERVICE/msgService'
 
 export default class MsgDetail extends Component {
+/* 有关Context的用法请看文档：https://facebook.github.io/react/docs/context.html
+  实际上可不引入 this.context.router，直接使用 this.props.history 即可
+  但 console 会报警告 Warning: [react-router] `props.history` and `context.history` are deprecated. Please use `context.router`. http://tiny.cc/router-contextchanges */
   static contextTypes = {
     router: PropTypes.object.isRequired
   }

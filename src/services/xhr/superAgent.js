@@ -1,17 +1,12 @@
 import request from 'superagent'
 import { rootPath, errHandler } from './config'
-import prefixWithSlash from './lib/prefixWithSlash'
 
-/**
- * gzip前大约为11KB
- */
 const xhr = ({ url, body = null, method = 'get' }) => {
-  url = prefixWithSlash(url)
-  
+  // 默认引入ES6的Promise实现
   return new Promise((resolve, reject) => {
     request[method.toLowerCase()](rootPath + url)
       .send(body)
-      .withCredentials()
+      // .withCredentials()
       .end((err, re) => {
         if (err)
           return errHandler(err)

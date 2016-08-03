@@ -19,11 +19,6 @@ const webpackConfig = {
     extensions: ['', '.js', '.jsx', '.json'],
     alias: {
       // 路径别名对 重构/引入 极其便利
-      // 但不建议添加过多
-      // 且请保持大写形式
-      // 若是小写形式则会被误以为是引入某package
-      // 例如：import xxx from 'utils/xxx'
-      // 正常人的第一反应是该引入了utils包的xxx函数
       COMPONENT: 'components',
       CONTAINER: 'containers',
       LAYOUT: 'layouts',

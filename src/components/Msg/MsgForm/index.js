@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import msgService from 'SERVICE/msgService'
-import tpl from './tpl.jsx' // 分离JSX模板以减少单文件代码量
+import tpl from './msg-form.jsx' // 分离JSX模板以减少单文件代码量
 
-// 为什么不直接 const initState = { ... } 而是用函数返回呢？
-// 皆因直接传initState仅是传引用，initState本身可被修改
+/* 为什么不直接 const initState = { ... } 而是用函数返回呢？
+   皆因直接传initState仅是传引用，initState本身可被修改 */
 const getInitState = () => ({ title: '', content: '' })
 
 /* 由于本组件由 /msg/add 与 /msg/:msgId 所公用
@@ -33,8 +33,7 @@ export default class MsgForm extends Component {
      在 /msg/add <==> /msg/modify/:msgId 之间的跳转，组件保持挂载状态
      故需要利用本函数更新state。不在乎性能者可利用我们的hack：Redirect组件 */
   componentWillReceiveProps(nextProps, context) {
-    // 记得传入nextProps
-    this.updateState(nextProps)
+    this.updateState(nextProps) // 传入nextProps
   }
 
   /* 不传入props则默认使用当前props */
@@ -85,9 +84,7 @@ export default class MsgForm extends Component {
   }
 
   render () {
-    // 使用call/apply，让tpl中的this（上下文context）与当前一致
-    // 我有洁癖+强迫症，所以分离模板
-    // 如果你没有，可以把模板写回来这里。。。
+    // 使用call/apply，让tpl中的上下文与当前一致
     return tpl.call(this)
   }
 }

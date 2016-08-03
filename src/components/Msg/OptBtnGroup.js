@@ -3,13 +3,6 @@ import { Link } from 'react-router'
 /* 本组件全名为Operation Button Group，操作按钮组 */
 export default class OptBtnGroup extends Component {
   static contextTypes = {
-  /* 有关Context的用法请看文档：
-     https://facebook.github.io/react/docs/context.html
-     实际上可不引入 this.context.router
-     直接使用 this.props.history 即可
-     但 console 会报如下警告
-     Warning: [react-router] `props.history` and `context.history` are deprecated.
-     Please use `context.router`. http://tiny.cc/router-contextchanges */
     router: PropTypes.object.isRequired
   }
 

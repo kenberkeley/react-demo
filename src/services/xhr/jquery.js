@@ -1,12 +1,7 @@
 import { rootPath, errHandler } from './config'
-import prefixWithSlash from './lib/prefixWithSlash'
 
-/**
- * 项目有采用jQuery的就更方便了
- */
 const xhr = ({ url, body = null, method = 'get' }) => {
-  url = prefixWithSlash(url)
-  
+  // 默认引入ES6的Promise实现
   return new Promise((resolve, reject) => {
     $.ajax({
       type: method,

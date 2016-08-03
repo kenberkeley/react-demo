@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import tpl from './tpl.jsx'
+import { Link } from 'react-router'
+import Pagination from './Pagination'
+import NoticeBar from './NoticeBar'
+import DisplayControl from './DisplayControl'
+import OptBtnGroup from 'COMPONENT/Msg/OptBtnGroup'
+import dateTimeFormatter from 'UTIL/dateTimeFormatter'
+import handleChange from 'MIXIN/handleChange'
 
 export default class MsgList extends Component {
   constructor (props) {
@@ -16,17 +22,14 @@ export default class MsgList extends Component {
 
   /**
    * 监听 /msg <==> /msg?author=:author 的跳转
-   * 类似于Vue中的 route.data 属性
-   * P.S: 无限循环坑 http://stackoverflow.com/questions/36189775
+   * 类似于Vue中的 route > data 属性
    */
   componentWillReceiveProps(nextProps) {
     let nextAuthor = nextProps.location.query.author
+    
+    // 无限循环坑 http://stackoverflow.com/questions/36189775
     if ( nextAuthor === this.props.location.query.author ) return
-
     this.props.fetchMsg({ author: nextAuthor, ...this.state })
-    // 你可能会问，为什么不直接用 this.updateMsgList？
-    // 那是因为 this.updateMsgList 中的 this.props.location.query.author 还没更新
-    // 除非你使用 setTimeout 把 this.props.fetchMsg 的那一部分包裹起来
   }
 
   updateMsgList (optNum = 0) {
@@ -38,7 +41,6 @@ export default class MsgList extends Component {
 
     // setState的“异步”坑：https://zhuanlan.zhihu.com/p/20328570
     this.setState(nextState)
-
     this.props.fetchMsg({
       author: this.props.location.query.author,
       ...nextState
@@ -46,6 +48,59 @@ export default class MsgList extends Component {
   }
 
   render () {
-    return tpl.call(this)
+    let { msgs, userData, delMsg } = this.props
+    let msgsLen = msgs.length
+    /* 下面的重点是bind的用法，此举可以让子组件修改父组件的state
+       这表面上貌似是反模式，但实际上数据依旧是单向流动
+       详情请看http://stackoverflow.com/questions/24147331 */
+    return (
+      <div>
+        <Pagination
+          {...this.state}
+          msgsLen={msgsLen}
+          updateMsgList={ this.updateMsgList.bind(this) } />
+
+        { !msgsLen &&
+          <NoticeBar />
+        }
+
+        <DisplayControl
+          {...this.state}
+          msgsLen={msgsLen}
+          handleChange={ handleChange.bind(this) }
+          updateMsgList={ this.updateMsgList.bind(this) } />
+
+        <ul className="list-group">
+          { msgs.map(msg =>
+            <li
+              className="list-group-item"
+              key={msg.id}>
+              <Link to={`/msg/detail/${msg.id}`}>
+                <b>{ msg.title }</b>
+              </Link>
+              <span className="badge">
+                { dateTimeFormatter(msg.time, 3) }
+              </span>
+              <br/>
+              <span className="text-muted">by&nbsp;</span>
+              <Link to={`/msg?author=${msg.author}`}>
+                <i>{ msg.author }</i>
+              </Link>
+              
+              <OptBtnGroup
+                msgId={msg.id}
+                isAuthor={userData && userData.username === msg.author}
+                delMsg={delMsg}>
+                <Link
+                  className="btn btn-info"
+                  to={`/msg/detail/${msg.id}`}>
+                  查看详情
+                </Link>
+              </OptBtnGroup>
+            </li>
+          )}
+        </ul>
+      </div>
+    )
   }
 }

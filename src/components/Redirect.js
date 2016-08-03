@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-
 /*
   设计初衷：
     replaceState的API被废弃
@@ -9,8 +8,8 @@ import React, { Component, PropTypes } from 'react'
     因为React能判断出当前组件可复用
     因此只能跳转到别的路径之后再跳回来
 
-  使用方法：（当前路径为/a/b/c）
-  <Link to="/redirect?dest=/a/b/c">重载本页</Link>
+  使用方法：（当前路径为/foo）
+  <Link to="/redirect?dest=/foo">重载本页</Link>
 */
 export default class Redirect extends Component {
   static contextTypes = {

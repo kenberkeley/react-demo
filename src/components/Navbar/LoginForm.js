@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import handleChange from 'MIXIN/handleChange'
 
 export default class LoginForm extends Component {
-  /* 实际上函数签名为constructor(props, context, {内部object}) */
+  /* 实际上函数签名为constructor(props, context, {React内部不明object}) */
   constructor (props) {
     super(props)
 
@@ -22,16 +22,12 @@ export default class LoginForm extends Component {
   }
 
   render () {
+  /* 由于ES6中React不会自动绑定this，直接onSubmit={this.handleSubmit}会报错
+    详情请参考https://facebook.github.io/react/docs/reusable-components.html#no-autobinding */
     return (
       <form
         role="search"
         className="navbar-form navbar-right"
-        /*
-          由于ES6中React不会自动绑定this
-          直接onSubmit={this.handleSubmit}会报错
-          详情请参考 #no-autobinding
-          https://facebook.github.io/react/docs/reusable-components.html
-         */
         onSubmit={
           (e) => {
             e.preventDefault() // 防页面跳转
@@ -43,7 +39,6 @@ export default class LoginForm extends Component {
           <input
             type="text"
             className="form-control"
-            /* 须有name属性，否则调用超类handleChange会无效 */
             name="username"
             placeholder="请输入您的用户名"
             required

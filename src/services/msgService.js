@@ -3,13 +3,6 @@ import xhr from './xhr/'
  * 对应后端的/msg/*所有API
  */
 class MsgService {
-
-  constructor () {
-    // 虽有./lib/prefixWithSlash.js提供补全
-    // 但最好还是写成/msg的形式而不是msg
-    this.baseUrl = '/msg'
-  }
-
   /**
    * 取msg（命名为fetch而非get主要是因为是远程操作）
    * @param  {String} options.author   作者名
@@ -19,7 +12,7 @@ class MsgService {
    * @return {Promise}
    */
   fetch ({ author = '', pageIdx = 1, quantity = 10, msgId } = {}) {
-    let url = this.baseUrl + '/'
+    let url = '/msg/'
     
     if (msgId) {
       url += msgId
@@ -38,7 +31,7 @@ class MsgService {
   add (msgBody) {
     return xhr({
       method: 'post',
-      url: this.baseUrl,
+      url: '/msg',
       body: msgBody
     })
   }
@@ -54,7 +47,7 @@ class MsgService {
 
     return xhr({
       method: 'put',
-      url: `${this.baseUrl}/${msgId}`,
+      url: `/msg/${msgId}`,
       body: msgBody
     })
   }
@@ -67,7 +60,7 @@ class MsgService {
   del (msgId) {
     return xhr({
       method: 'delete',
-      url: `${this.baseUrl}/${msgId}`
+      url: `/msg/${msgId}`
     })
   }
 

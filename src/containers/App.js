@@ -29,7 +29,7 @@ export default App
     }
     componentDidMount () {
       // 之后就可以这样子获取
-      this.context.store.getState() // 输出当前state树
+      this.context.store.getState() // 输出当前根state(store)树
     }
   }
 */

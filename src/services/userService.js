@@ -5,11 +5,8 @@ import xhr from './xhr/'
  */
 class UserService {
 
-  // 声明：该服务外挂data属性（userService.data）
-  // 挂载到全局Appx中
-
   checkLogin () {
-    return xhr({ url: 'user' })
+    return xhr({ url: '/user' })
   }
 
   /**
@@ -20,13 +17,13 @@ class UserService {
   login (userData) {
     return xhr({
       method: 'post',
-      url: 'login',
+      url: '/login',
       body: userData
     })
   }
 
   logout () {
-    return xhr({ url: 'logout' })
+    return xhr({ url: '/logout' })
   }
 
 }

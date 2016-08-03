@@ -8,7 +8,7 @@ const MsgLayout = ({ children, location }) => (
       <Link
         className="btn btn-default btn-lg btn-block"
         to="/msg/add">
-        New Message
+        添加消息
         <span className="glyphicon glyphicon-plus"></span>
       </Link>
     }

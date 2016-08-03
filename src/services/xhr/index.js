@@ -1,9 +1,14 @@
-// 根据项目的不同自行修改所采用的Ajax类库
-// 实际上配置可以在这里写而省去新建./config.js
-// 但是这就涉及到循环引用，静态分析会重复打包
 import xhr from './jquery'
+// import xhr from './superagent'
 
-/*
-  e.g. xhr({ method: 'post', url: 'XXX', body: {Object} })
+/**
+ * XHR请求接口定义
+ * @param  {String} options.method 请求方法，默认为get。支持post、put、patch、delete等
+ * @param  {String} options.url    请求路径，基于rootPath地址。例：欲请求http://localhost:9000/user，仅需要填写/user即可
+ * @param  {Object} options.body   请求体。后端Express使用req.body获取该对象
+ * @return {Promise}
+ *
+ * 使用例子 xhr({ method: 'post', url: 'XXX', body: {Object} })
+ * 最简单的例子 xhr({ url: '/user' })
  */
 export default xhr
