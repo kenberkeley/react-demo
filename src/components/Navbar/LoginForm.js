@@ -43,7 +43,7 @@ export default class LoginForm extends Component {
             placeholder="请输入您的用户名"
             required
             value={ this.state.username }
-            onChange={(e) => this.handleChange(e)} />
+            onChange={this.handleChange} />
         </div>
         
         <button

@@ -58,7 +58,7 @@ export default class MsgList extends Component {
         <Pagination
           {...this.state}
           msgsLen={msgsLen}
-          updateMsgList={ this.updateMsgList.bind(this) } />
+          updateMsgList={::this.updateMsgList} />
 
         { !msgsLen &&
           <NoticeBar />
@@ -68,7 +68,7 @@ export default class MsgList extends Component {
           {...this.state}
           msgsLen={msgsLen}
           handleChange={ handleChange.bind(this) }
-          updateMsgList={ this.updateMsgList.bind(this) } />
+          updateMsgList={::this.updateMsgList} />
 
         <ul className="list-group">
           { msgs.map(msg =>

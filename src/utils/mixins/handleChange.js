@@ -19,8 +19,19 @@
  *   this.handleChange = handleChange.bind(this)
  * }
  * 之后就可以这样写了
- * onClick={(e) => this.handleChange(e)}
- * 但一定要记得要传入e哦！
+ * onClick={this.handleChange}
+ *
+ * 例子3：使用::绑定
+ * constructor (props) {
+ *   super(props)
+ *   this.handleChange = handleChange // 这里只是直接引用这个函数 
+ * }
+ * 之后这样写
+ * onClick={::this.handleChange}
+ *
+ * 为什么不能直接
+ * onClick={::handleChange} ？
+ * 因为会报错 Binding should be performed on object property.
  */
 export default function handleChange(evt) {
   this.setState({
