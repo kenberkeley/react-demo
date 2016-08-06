@@ -6,11 +6,7 @@ import routes from 'ROUTE/'
 
 const App = () => (
   <Provider store={store}>
-    <Router
-      key={Math.random()}
-      history={history}
-      children={routes}
-    />
+    <Router history={history} children={routes} />
   </Provider>
 )
 
