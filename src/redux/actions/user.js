@@ -3,7 +3,7 @@ import userService from 'SERVICE/userService'
 export const LOG_IN = 'LOG_IN'
 export const LOG_OUT = 'LOG_OUT'
 
-/* 定义Actions */
+/* 定义Actions Creator */
 const loginDone = (userData) => ({
   type: LOG_IN,
   payload: userData
@@ -41,7 +41,7 @@ const logout = () => {
       )
   }
 }
-/* default导出所有Actions，Container就可以很方便地全部mapActionCreators */
+/* default导出所有Actions Creator，Container就可以很方便地全部mapActionCreators */
 export default {
   login, checkLogin, logout
 }

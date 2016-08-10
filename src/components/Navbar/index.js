@@ -40,19 +40,14 @@ export default class Navbar extends Component {
                     欢迎页
                   </IndexLink>
                 </li>
-                <li className={
-                  location.pathname.startsWith('/msg') && 'active'
-                  }>
+                <li className={location.pathname.startsWith('/msg') && 'active'}>
                   <Link to='/msg'>
                     留言板
                   </Link>
                 </li>
               </ul>
-              { 
-                userData ?
-                <LogoutDropdown
-                  userData={userData}
-                  logout={logout} /> :
+              { userData ?
+                <LogoutDropdown userData={userData} logout={logout} /> :
                 <LoginForm login={login} />
               }
             </div>

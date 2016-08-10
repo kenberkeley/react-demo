@@ -19,11 +19,11 @@
   #connectmapstatetoprops-mapdispatchtoprops-mergeprops-options
  */
 import { connect } from 'react-redux'
-import { default as actions } from 'ACTION/msg'
+import { default as actionCreators } from 'ACTION/msg'
 import MsgDetail from 'COMPONENT/Msg/MsgDetail'
 
 // 传入actions
-const mapActionCreators = actions
+const mapActionCreators = actionCreators
 
 // 从store中传入组件所需的数据
 const mapStateToProps = ({ userData, msgs }) => ({ userData, msgs })

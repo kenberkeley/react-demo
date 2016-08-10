@@ -9,7 +9,7 @@ import { Link } from 'react-router'
   实际上ES6的类经由Babel
   转码后其实还是返回一个类似的函数
  */
-export const Welcome = (props) => (
+const Welcome = () => (
   <div className="jumbotron">
     <h1>欢迎使用 <br/> React Demo</h1>
     <p>

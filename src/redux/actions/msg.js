@@ -5,7 +5,7 @@ const ADD_MSG = 'ADD_MSG'
 const MOD_MSG = 'MOD_MSG'
 const DEL_MSG = 'DEL_MSG'
 
-/* 定义Actions */
+/* 定义Actions Creator */
 const fetchMsg = queryBody => dispatch =>
   msgService
     .fetch(queryBody)
@@ -44,7 +44,7 @@ const delMsg = msgId => dispatch =>
       payload: msgId
     }))
 
-/* default导出所有Actions，Container就可以很方便地全部mapActionCreators */
+/* default导出所有Action Creator，Container就可以很方便地全部mapActionCreators */
 export default {
   fetchMsg, addMsg, modMsg, delMsg
 }

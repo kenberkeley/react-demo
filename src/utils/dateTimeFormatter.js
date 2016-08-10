@@ -3,7 +3,7 @@
  * @param  {Number} val
  * @return {String/Number}
  */
-let zerofill = val => val >= 10 ? val : '0' + val
+const zerofill = val => val >= 10 ? val : '0' + val
 /* 相当于：
   var zerofill = function (val) {
     return val >=10 ? val : '0' + val
@@ -16,7 +16,7 @@ let zerofill = val => val >= 10 ? val : '0' + val
  * @param  {Number} type 格式化类型
  * @return {String}
  */
-export default (time, type) => {
+export default function dataTimeFormatter(time, type) {
   let date = new Date(time)
   let year = date.getFullYear()
   let month = date.getMonth() + 1

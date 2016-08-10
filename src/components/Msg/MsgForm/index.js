@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import msgService from 'SERVICE/msgService'
-import tpl from './msg-form.jsx' // 分离JSX模板以减少单文件代码量
+import handleChange from 'MIXIN/handleChange'
+import tpl from './msg-form.jsx' // 分拆写JSX模板以减少单文件代码量
 
 /* 为什么不直接 const initState = { ... } 而是用函数返回呢？
    皆因直接传initState仅是传引用，initState本身可被修改 */
@@ -23,6 +24,8 @@ export default class MsgForm extends Component {
     // 初始state必须定义，否则会报错
     // 就像在Vue中需要在data定义默认值
     this.state = getInitState()
+
+    this.handleChange = handleChange.bind(this) // mixin
   }
 
   componentDidMount() {
@@ -85,6 +88,7 @@ export default class MsgForm extends Component {
 
   render () {
     // 使用call/apply，让tpl中的上下文与当前一致
+    // 这里只是为了演示的方便，最佳实践应该在构造函数中使用bind绑定
     return tpl.call(this)
   }
 }

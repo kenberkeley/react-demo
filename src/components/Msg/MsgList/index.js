@@ -50,9 +50,10 @@ export default class MsgList extends Component {
   render () {
     let { msgs, userData, delMsg } = this.props
     let msgsLen = msgs.length
-    /* 下面的重点是bind的用法，此举可以让子组件修改父组件的state
+    /* 下面的重点是绑定的用法，此举可以让子组件修改父组件的state
        这表面上貌似是反模式，但实际上数据依旧是单向流动
-       详情请看http://stackoverflow.com/questions/24147331 */
+       详情请看http://stackoverflow.com/questions/24147331
+       当然，这里只是为了演示，最佳实践应在构造函数使用bind绑定 */
     return (
       <div>
         <Pagination
@@ -60,21 +61,17 @@ export default class MsgList extends Component {
           msgsLen={msgsLen}
           updateMsgList={::this.updateMsgList} />
 
-        { !msgsLen &&
-          <NoticeBar />
-        }
+        { !msgsLen && <NoticeBar /> }
 
         <DisplayControl
           {...this.state}
           msgsLen={msgsLen}
-          handleChange={ handleChange.bind(this) }
+          handleChange={this::handleChange}
           updateMsgList={::this.updateMsgList} />
 
         <ul className="list-group">
           { msgs.map(msg =>
-            <li
-              className="list-group-item"
-              key={msg.id}>
+            <li className="list-group-item" key={msg.id}>
               <Link to={`/msg/detail/${msg.id}`}>
                 <b>{ msg.title }</b>
               </Link>

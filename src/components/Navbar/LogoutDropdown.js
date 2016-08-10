@@ -22,7 +22,7 @@ export default class LogoutDropdown extends Component {
             <strong className="caret"></strong>
           </a>
           <ul className="dropdown-menu">
-            <li onClick={ () => this.logout() }>
+            <li onClick={() => this.logout()}>
               <a href="javascript:;">
                 注销登录
               </a>

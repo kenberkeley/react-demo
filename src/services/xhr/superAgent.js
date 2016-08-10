@@ -2,7 +2,7 @@ import request from 'superagent'
 import { rootPath, errHandler } from './config'
 
 const xhr = ({ url, body = null, method = 'get' }) => {
-  // 默认引入ES6的Promise实现
+  // P.S: 此处引入了ES6的Promise实现
   return new Promise((resolve, reject) => {
     request[method.toLowerCase()](rootPath + url)
       .send(body)

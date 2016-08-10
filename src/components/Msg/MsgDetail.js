@@ -59,7 +59,7 @@ export default class MsgDetail extends Component {
             parentName="MsgDetail">
             <button /* 该按钮相当于Vue中的slot */
               className="btn btn-primary btn-xs"
-              onClick={ () => this.context.router.goBack() }>
+              onClick={() => this.context.router.goBack()}>
               返回
             </button>
           </OptBtnGroup>

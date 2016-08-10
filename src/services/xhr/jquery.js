@@ -1,16 +1,17 @@
 import { rootPath, errHandler } from './config'
 
 const xhr = ({ url, body = null, method = 'get' }) => {
-  // 默认引入ES6的Promise实现
-  return new Promise((resolve, reject) => {
-    $.ajax({
-      type: method,
-      url: rootPath + url,
-      data: body
-    })
-    .done(resolve)
-    .fail(errHandler)
+  const defer = $.Deferred()
+
+  $.ajax({
+    type: method,
+    url: rootPath + url,
+    data: body
   })
+  .done(defer.resolve)
+  .fail(errHandler)
+
+  return defer.promise()
 }
 
 export default xhr
