@@ -17,19 +17,7 @@ const webpackConfig = {
   resolve: {
     root: paths.client(),
     extensions: ['', '.js', '.jsx', '.json'],
-    alias: {
-      // 路径别名对 重构/引入 极其便利
-      COMPONENT: 'components',
-      CONTAINER: 'containers',
-      LAYOUT: 'layouts',
-      REDUX: 'redux',
-      ACTION: 'redux/actions',
-      REDUCER: 'redux/reducers',
-      ROUTE: 'routes',
-      SERVICE: 'services',
-      UTIL: 'utils',
-      MIXIN: 'utils/mixins'
-    }
+    alias: config.alias
   },
   module: {}
 }

@@ -2,7 +2,9 @@ import React from 'react'
 import Navbar from 'COMPONENT/Navbar/'
 
 let DevTools
-if (__DEV__) { DevTools = require('CONTAINER/DevTools').default }
+if (__EMBEDDED_DEVTOOLS__) {
+  DevTools = require('CONTAINER/DevTools').default
+}
 
 const MainLayout = (props) => (
   <div>

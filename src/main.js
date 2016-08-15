@@ -10,6 +10,12 @@ const MOUNT_NODE = document.getElementById('app')
 // ========================================================
 let render = () => ReactDOM.render(<App />, MOUNT_NODE)
 
+// if (__DEV__) {
+//   // https://github.com/garbles/why-did-you-update
+//   const { whyDidYouUpdate } = require('why-did-you-update')
+//   whyDidYouUpdate(React)
+// }
+
 // Enable HMR and catch runtime errors in RedBox
 // This code is excluded from production bundle
 if (__DEV__ && module.hot) {

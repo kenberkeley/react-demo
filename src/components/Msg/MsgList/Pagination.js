@@ -1,13 +1,14 @@
 import React from 'react'
+import ExampleHOC from 'HOC/ExampleHOC'
 
-const Pagination = ({ msgsLen, pageIdx, quantity, updateMsgList }) => (
+const Pagination = ({ msgsLen, pageIdx, quantity, goPrevPage, goNextPage }) => (
   <nav>
     <ul className="pager">
       { /* 显然页码要大于1才显示上一页 */
         pageIdx > 1 &&
         <li
           className="previous"
-          onClick={() => updateMsgList(-1)}>
+          onClick={() => goPrevPage()}>
           <a href="javascript:;">
             <span aria-hidden="true">&larr;</span>
             上一页
@@ -18,7 +19,7 @@ const Pagination = ({ msgsLen, pageIdx, quantity, updateMsgList }) => (
         msgsLen == quantity &&
         <li
           className="next"
-          onClick={() => updateMsgList(1)}>
+          onClick={() => goNextPage()}>
           <a href="javascript:;">
             下一页
             <span aria-hidden="true">&rarr;</span>
@@ -29,4 +30,4 @@ const Pagination = ({ msgsLen, pageIdx, quantity, updateMsgList }) => (
   </nav>
 )
 
-export default Pagination
+export default ExampleHOC(Pagination)

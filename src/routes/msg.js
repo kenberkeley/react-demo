@@ -1,5 +1,5 @@
 import store from 'REDUX/store' 
-import { injectReducer } from 'REDUX/rootReducer'
+import injectReducer from 'REDUX/injectReducer'
 import userAuth from 'MIXIN/userAuth' // 用户访问拦截器
 
 export default {
@@ -9,8 +9,8 @@ export default {
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
       const container = require('LAYOUT/msg').default
-      const reducer = require('REDUCER/msg').default
-      injectReducer(store, { key: 'msgs', reducer })
+      const reducer = require('REDUCER/msg/').default
+      injectReducer({ key: 'msg', reducer })
       cb(null, container)
     }, 'msg')
   },

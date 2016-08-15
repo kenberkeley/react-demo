@@ -70,6 +70,19 @@ Edit at Your Own Risk
 
 -------------------------------------------------
 ************************************************/
+config.alias = {
+  COMPONENT: 'components',
+  CONTAINER: 'containers',
+  LAYOUT: 'layouts',
+  REDUX: 'redux',
+  ACTION: 'redux/actions',
+  REDUCER: 'redux/reducers',
+  ROUTE: 'routes',
+  SERVICE: 'services',
+  UTIL: 'utils',
+  HOC: 'utils/HOC',
+  MIXIN: 'utils/mixins'
+}
 
 // ------------------------------------
 // Environment
@@ -85,7 +98,8 @@ config.globals = {
   '__TEST__'     : config.env === 'test',
   '__DEBUG__'    : config.env === 'development' && !argv.no_debug,
   '__COVERAGE__' : !argv.watch && config.env === 'test',
-  '__BASENAME__' : JSON.stringify(process.env.BASENAME || '')
+  '__BASENAME__' : JSON.stringify(process.env.BASENAME || ''),
+  '__EMBEDDED_DEVTOOLS__': false
 }
 
 // ------------------------------------

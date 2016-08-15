@@ -7,19 +7,10 @@ import store from 'REDUX/store'
  * https://github.com/reactjs/react-router/blob/master/docs/API.md#onEnter
  */
 export default function userAuth(nextState, replace, next) {
+  console.log(nextState)
   let { userData } = store.getState()
   if (userData) return next()
 
   alert('请先登录后再访问')
   next(replace('/msg'))
 }
-
-/*
-  官方的函数参数表是
-  onEnter (nextState, replace, cb)
-  
-  但拦截器实则就是一种中间件
-  跟Express中的中间件是一个道理
-  在Express中我们惯用的是next
-  这里为了更容易理解也用了next
- */

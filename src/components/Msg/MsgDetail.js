@@ -21,7 +21,7 @@ export default class MsgDetail extends Component {
     // P.S: 在Vue Demo中，msg是直接从服务器中获取
     // 而这里可以先直接从store中获取，获取不到才从服务器获取
     // （这种情况一般是直接刷新页面后）
-    let { msgs, params: { msgId } } = this.props
+    let { msg: { msgs }, params: { msgId } } = this.props
 
     let msg = msgs.filter(({ id }) => id === msgId)[0]
     msg ? this.setState({ msg }) : this.fetchMsgNow(msgId)

@@ -5,7 +5,7 @@ import tpl from './msg-form.jsx' // 分拆写JSX模板以减少单文件代码�
 
 /* 为什么不直接 const initState = { ... } 而是用函数返回呢？
    皆因直接传initState仅是传引用，initState本身可被修改 */
-const getInitState = () => ({ title: '', content: '' })
+const getInitState = () => ({ id: '', title: '', content: '' })
 
 /* 由于本组件由 /msg/add 与 /msg/:msgId 所公用
    因此需要判断当前是“新增模式”还是“修改模式” */
@@ -35,18 +35,18 @@ export default class MsgForm extends Component {
   /* 由于本组件为共用组件，但React本身不提供类似Vue的canReuse属性
      在 /msg/add <==> /msg/modify/:msgId 之间的跳转，组件保持挂载状态
      故需要利用本函数更新state。不在乎性能者可利用我们的hack：Redirect组件 */
-  componentWillReceiveProps(nextProps, context) {
+  componentWillReceiveProps(nextProps) {
     this.updateState(nextProps) // 传入nextProps
   }
 
   /* 不传入props则默认使用当前props */
-  updateState ({ location, params:{msgId}, userData:{username}, msgs } = this.props) {
+  updateState ({ location, params:{msgId}, userData:{username}, msg:{msgs} } = this.props) {
     // 情况1：处于 /msg/add
     if (isAddMode(location.pathname)) {
       return this.setState(getInitState())
     }
 
-    // 情况2：处于/msg/modify/:msgId，且store中msgs不为空
+    // 情况2：处于/msg/modify/:msgId，且state中msgs不为空
     if (msgs.length) {
       let nextState = msgs.filter(({ id }) => id === msgId)[0]
       if (!nextState || nextState.author !== username) {
@@ -56,13 +56,13 @@ export default class MsgForm extends Component {
     }
 
     // 情况3：刷新 /msg/detail/:msgId 后跳转到 /msg/modify/:msgId
-    // 此时store中msgs为空，需要临时获取
+    // 此时state中msgs为空，需要临时获取
     msgService.fetch({ msgId }).then(msg => {
-      let { title, content, author } = msg
+      let { id, title, content, author } = msg
       if (!msg || author !== username) {
         return this.handleIllegal()
       }
-      this.setState({ title, content })
+      this.setState({ id, title, content })
     })
   }
 
@@ -80,6 +80,10 @@ export default class MsgForm extends Component {
   handleSubmit () {
     let { pathname } = this.props.location
     let opt = isAddMode(pathname) ? 'addMsg' : 'modMsg'
+
+    // 提交后，由于会触发componentWillReceiveProps
+    // 因此这里需要把该函数“清空”避免浪费性能
+    this.updateState = () => {}
 
     this.props[opt](this.state).then(({ id }) => {
       this.context.router.replace(`/msg/detail/${id}`)

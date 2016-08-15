@@ -1,8 +1,8 @@
 {
   "name": "react-demo",
   "version": "0.1.0",
-  "description": "A Vue-like React Development",
-  "main": "index.js",
+  "author": "Ken Berkeley <kenberkeley@foxmail.com>",
+  "description": "A Simple Message Board Demo developed by React",
   "engines": {
     "node": ">=4.2.0",
     "npm": "^3.0.0"
@@ -74,7 +74,6 @@
     "type": "git",
     "url": "git+https://github.com/kenberkeley/react-demo"
   },
-  "author": "Ken Berkeley <kenberkeley@foxmail.com>",
   "license": "MIT",
   "dependencies": {
     "history": "^2.0.0",
@@ -157,6 +156,7 @@
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.6.0",
+    "why-did-you-update": "0.0.8",
     "yargs": "^4.0.0"
   }
 }
