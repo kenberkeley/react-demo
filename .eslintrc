@@ -15,7 +15,8 @@
     "__PROD__"     : false,
     "__DEBUG__"    : false,
     "__COVERAGE__" : false,
-    "__BASENAME__" : false
+    "__BASENAME__" : false,
+    "__EMBEDDED_DEVTOOLS__": false
   },
   "rules": {
     "semi" : [2, "never"],
