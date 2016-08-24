@@ -1,5 +1,8 @@
 # React 示例项目 · 简易留言板
 
+> ### 好消息：本项目将采用 `vue-cli` 生成的模板重新改版，敬请期待（建议 watch）！
+> ### 实在难以忍受那些拥有复杂架构的 React 示例项目！！！我们要向 Vue 看齐！！！
+
 ![应用截图](./screenshot.png)
 
 > ###写在前面
@@ -101,6 +104,7 @@
 * 将无需 Webpack 处理的静态资源目录移入`server/`，即 `server/public/`
 * 重命名 `config/` 下 `environment.js => custom.js`
 * Redux DevTools：提供 [页面中的组件形式][redux-devtools] 或 [Chrome 插件][redux-devtools-extension]形式 两种选择
+* 引入 [Redux Logger][redux-logger]
 
 主要删减的部分有：
 * 为了减轻单文件代码量，去除绝大部分的 `PropTypes` 校验（往后的开发最好还是写上）
@@ -145,12 +149,12 @@
 
 ## &sect; 拓展阅读
 
-* http://marmelab.com/blog/2015/12/17/react-directory-structure.html 探讨 React 项目目录结构
-* https://github.com/jasonslyvia/a-cartoon-intro-to-redux-cn 看漫画，学 Redux
-* http://www.oschina.net/news/72579/redux-react 图解 Redux 与 React 的关系
-* https://zhuanlan.zhihu.com/purerender?topic=React 知乎专栏 · pure render
-* http://zhenhua-lee.github.io/react/redux.html 解读 Redux 工作原理
-* http://www.jianshu.com/p/3334467e4b32 Redux 核心概念
+* [Redux 简明教程][redux-simple-tutorial]
+* [探讨 React 项目目录结构](http://marmelab.com/blog/2015/12/17/react-directory-structure.html)
+* [看漫画，学 Redux](https://github.com/jasonslyvia/a-cartoon-intro-to-redux-cn)
+* [图解 Redux 与 React 的关系](http://www.oschina.net/news/72579/redux-react)
+* [知乎专栏 · pure render](https://zhuanlan.zhihu.com/purerender?topic=React)
+* [Redux 核心概念](http://www.jianshu.com/p/3334467e4b32)
 
 
 [fork-from]: https://github.com/davezuko/react-redux-starter-kit
@@ -168,6 +172,7 @@
 [vue-demo-difference]: https://github.com/kenberkeley/vue-demo#difference
 [redux-devtools]: https://github.com/gaearon/redux-devtools
 [redux-devtools-extension]: https://github.com/zalmoxisus/redux-devtools-extension
+[redux-logger]: https://github.com/evgenyrodionov/redux-logger
 [redux-cli]: https://github.com/SpencerCDixon/redux-cli
 [eslint-auto-fix]: http://eslint.org/docs/user-guide/command-line-interface.html#fix
 [alias]: https://github.com/kenberkeley/vue-demo#alias
