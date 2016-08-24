@@ -21,7 +21,7 @@
 > ###写在前面
 > 本示例项目改自 [react-redux-starter-kit][fork-from]，主要是对项目源码架构进行了优雅的重构  
 > 设计理念与 [Vue 示例项目 · 简易留言板][vue-demo]（以下简称 Vue Demo） 高度一致  
-> （在这里，我衷心希望您能够看完 Vue Demo 的 [README][vue-demo] 来理解项目架构的思路）
+> （在这里，我衷心希望您能浏览 Vue Demo 的 [README][vue-demo] 来理解项目架构的思路）
 > 
 > 值得注意的是，本类项目使用 Webpack 的 [Code Splitting][code-splitting] 实现按需加载  
 > 与 [react-redux-universal-hot-example][universal] 这一类**前后端同构**项目有一定差异  
@@ -47,7 +47,7 @@
 > 最好还把玩过 [Redux Example][redux-example] 的 Counter / Todo 这些简单的示例  
 > 如果您还对 Redux 的理解有点迷糊，推荐继续阅读 [Redux 简明教程][redux-simple-tutorial]
 
-> 您还需要熟悉 ES6。例如，请把  
+> 同时您还需要熟悉 ES6。例如，请把  
 > `const foo = ({ hello: { world: bar } }) => ({ bar })`  
 > 转译成 ES5（答案请自行在 [Babel REPL][babel-repl] 在线编译验证）
 
@@ -119,8 +119,8 @@
 * Redux DevTools：提供 [页面中的组件形式][redux-devtools] 或 [Chrome 插件][redux-devtools-extension]形式 两种选择
 
 主要删减的部分有：
-* 为了减轻单文件代码量，去除绝大部分的 `PropTypes` 校验以显简洁
-* 为了目录结构的轻量化，删除 [Redux CLI][redux-cli] 的 `blueprints/` 以及单元测试 `tests/`
+* 为了减轻单文件代码量，去除绝大部分的 `PropTypes` 校验（往后的开发最好还是写上）
+* 删除 [Redux CLI][redux-cli] 的 `blueprints/` 以及单元测试 `tests/`
 
 不管怎样，我们都兼容 `react-redux-starter-kit` 的一整套命令
 
@@ -164,6 +164,6 @@
 * http://marmelab.com/blog/2015/12/17/react-directory-structure.html 探讨 React 项目目录结构
 * https://github.com/jasonslyvia/a-cartoon-intro-to-redux-cn 看漫画，学 Redux
 * http://www.oschina.net/news/72579/redux-react 图解 Redux 与 React 的关系
-* https://zhuanlan.zhihu.com/purerender?topic=React 知乎专栏·pure render
+* https://zhuanlan.zhihu.com/purerender?topic=React 知乎专栏 · pure render
 * http://zhenhua-lee.github.io/react/redux.html 解读 Redux 工作原理
 * http://www.jianshu.com/p/3334467e4b32 Redux 核心概念
