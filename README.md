@@ -1,22 +1,6 @@
 # React 示例项目 · 简易留言板
-[fork-from]: https://github.com/davezuko/react-redux-starter-kit
-[vue-demo]: https://github.com/kenberkeley/vue-demo
-[code-splitting]: https://webpack.github.io/docs/code-splitting.html
-[universal]: https://github.com/erikras/react-redux-universal-hot-example
-[dynamic-routing]: http://react-guide.github.io/react-router-cn/docs/guides/advanced/DynamicRouting.html
-[react-docs]: http://reactjs.cn/react/docs/getting-started.html
-[redux-docs]: http://cn.redux.js.org/index.html
-[react-router-docs]: http://react-guide.github.io/react-router-cn/
-[redux-example]: https://github.com/reactjs/redux/tree/master/examples
-[redux-simple-tutorial]: https://github.com/kenberkeley/redux-simple-tutorial
-[babel-repl]: http://babeljs.io/repl/ 
-[msg-board-api]: https://github.com/kenberkeley/msg-board-api
-[vue-demo-difference]: https://github.com/kenberkeley/vue-demo#difference
-[redux-devtools]: https://github.com/gaearon/redux-devtools
-[redux-devtools-extension]: https://github.com/zalmoxisus/redux-devtools-extension
-[redux-cli]: https://github.com/SpencerCDixon/redux-cli
-[eslint-auto-fix]: http://eslint.org/docs/user-guide/command-line-interface.html#fix
-[alias]: https://github.com/kenberkeley/vue-demo#alias
+
+![应用截图](./screenshot.png)
 
 > ###写在前面
 > 本示例项目改自 [react-redux-starter-kit][fork-from]，主要是对项目源码架构进行了优雅的重构  
@@ -167,3 +151,23 @@
 * https://zhuanlan.zhihu.com/purerender?topic=React 知乎专栏 · pure render
 * http://zhenhua-lee.github.io/react/redux.html 解读 Redux 工作原理
 * http://www.jianshu.com/p/3334467e4b32 Redux 核心概念
+
+
+[fork-from]: https://github.com/davezuko/react-redux-starter-kit
+[vue-demo]: https://github.com/kenberkeley/vue-demo
+[code-splitting]: https://webpack.github.io/docs/code-splitting.html
+[universal]: https://github.com/erikras/react-redux-universal-hot-example
+[dynamic-routing]: http://react-guide.github.io/react-router-cn/docs/guides/advanced/DynamicRouting.html
+[react-docs]: http://reactjs.cn/react/docs/getting-started.html
+[redux-docs]: http://cn.redux.js.org/index.html
+[react-router-docs]: http://react-guide.github.io/react-router-cn/
+[redux-example]: https://github.com/reactjs/redux/tree/master/examples
+[redux-simple-tutorial]: https://github.com/kenberkeley/redux-simple-tutorial
+[babel-repl]: http://babeljs.io/repl/ 
+[msg-board-api]: https://github.com/kenberkeley/msg-board-api
+[vue-demo-difference]: https://github.com/kenberkeley/vue-demo#difference
+[redux-devtools]: https://github.com/gaearon/redux-devtools
+[redux-devtools-extension]: https://github.com/zalmoxisus/redux-devtools-extension
+[redux-cli]: https://github.com/SpencerCDixon/redux-cli
+[eslint-auto-fix]: http://eslint.org/docs/user-guide/command-line-interface.html#fix
+[alias]: https://github.com/kenberkeley/vue-demo#alias
