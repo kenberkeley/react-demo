@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>React Demo</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  {% for (var css in o.htmlWebpackPlugin.files.css) { %}
+  <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
+  {% } %}
+</head>
+<body>
+
+  <div id="app"></div>
+
+<script src="/static/jquery.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+<script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
+{% } %}
+</body>
+</html>
