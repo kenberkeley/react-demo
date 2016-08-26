@@ -179,7 +179,7 @@
 * [探讨 React 项目目录结构](http://marmelab.com/blog/2015/12/17/react-directory-structure.html)
 
 [vue-cli]: https://github.com/vuejs/vue-cli
-[vue-cli-template]: http://vuejs-templates.github.io/webpack/
+[vue-cli-template]: http://vuejs-templates.github.io/webpack/structure
 [vue-demo]: https://github.com/kenberkeley/vue-demo
 [react-doc]: http://reactjs.cn/react/docs/getting-started-zh-CN.html
 [redux-doc]: http://camsong.github.io/redux-in-chinese/index.html
