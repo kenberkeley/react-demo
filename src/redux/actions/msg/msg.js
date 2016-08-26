@@ -48,7 +48,7 @@ const delMsg = msgId => dispatch =>
       payload: msgId
     }))
 
-/* default 导出所有 Action Creators，在 Container 中就可以很方便地全部 mapActionCreators */
+/* default 导出所有 Action Creators */
 export default {
   fetchMsg, addMsg, modMsg, delMsg
 }

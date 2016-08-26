@@ -15,7 +15,7 @@ export default {
       require.ensure([], (require) => {
         injectReducer('todos', require('REDUCER/todo').default)
 
-        cb(null, require('CONTAINER/todo').default)
+        cb(null, require('COMPONENT/todo').default)
       }, 'todoIndex')
     }
   }
