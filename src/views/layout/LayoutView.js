@@ -5,7 +5,7 @@ import React from 'react'
 import Navbar from 'COMPONENT/Navbar/'
 
 let DevTools
-if (__COMPONENT_DEVTOOLS__) {
+if (__DEV__ && __COMPONENT_DEVTOOLS__) {
   // 组件形式的 Redux DevTools
   DevTools = require('CONTAINER/DevTools').default
 }

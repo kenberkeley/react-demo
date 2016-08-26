@@ -104,14 +104,16 @@
 ### <a name="character">⊙ 特色</a>
 * 本示例项目秉承最佳实践，**高度洁癖**地实现代码分离/复用
 * 优化目录结构，更好的模块分离，更接近 Vue 的开发模式
-* Redux DevTools，可选 [Chrome 插件形式][chrome-extension] 或 内嵌页面的[组件形式][devtools-component]
+* Redux DevTools，可选 [Chrome 插件形式][chrome-extension]（默认） 或 内嵌页面的[组件形式][devtools-component]
 * [Redux Logger][redux-logger] 打印动作及前后状态变化
-* [why-did-you-update][why-did-u-update] 检测不必要的组件重渲染
+* [why-did-you-update][why-did-u-update] 检测不必要的组件重渲染（默认关闭）
 * 引入服务层统一管理 XHR 请求（好处请参考 Vue Demo 中的 [引入服务层][service-intro]）
 * 引入 [路径别名](#alias) 实现优雅的加载模式
 * 引入 [React Hot Reload][hot-loader]，支持热替换
 * 生产环境下的编译对代码进行[优化][react-optimize]
 * 迄今为止我见过的最完美的 starter kit
+
+> 有关 Redux DevTools 与 why-did-you-update 的启用与禁用，见下面的 [开发环境全局变量](#dev-global-vars) 配置
 
 ***
 
@@ -139,7 +141,7 @@
 > 而且重构之后，文件夹的变动会导致相对路径的变化，`services/` 目录未必仍在 `src/` 下    
 > 因此，路径别名相当有必要。其**常量**的形式，让人一看就知道不是一个 npm package
 
-* 开发**全局变量**，由 `webpack.DefinePlugin` 提供（详见 `build/webpack.base.conf.js`）
+* 开发环境<a name="dev-global-vars">**全局变量**</a>，由 `webpack.DefinePlugin` 提供（详见 `build/webpack.base.conf.js`）
 > 默认有 `__DEV__` / `__PROD__` / `__COMPONENT_DEVTOOLS__` / `__WHY_DID_YOU_UPDATE__` 四个全局变量  
 > 若要继续添加，则还需要在 `.eslintrc` 中 `globals` 同步写入
 > 
