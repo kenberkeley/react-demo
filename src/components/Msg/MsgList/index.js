@@ -11,6 +11,7 @@ export default class MsgList extends Component {
     let { author } = this.props.location.query
     if (author) this.props.specifyAuthor(author)
     this.updateMsgList()
+    console.log(this.props)
   }
   /**
    * 类似于 Vue 中的 route: { data: Function } 属性，监听路由变化加载数据

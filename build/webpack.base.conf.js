@@ -34,7 +34,6 @@ module.exports = {
       // 自定义路径别名
       // ================================
       COMPONENT: path.join(srcPath, 'components'),
-      CONTAINER: path.join(srcPath, 'containers'),
       ACTION: path.join(srcPath, 'redux/actions'),
       REDUCER: path.join(srcPath, 'redux/reducers'),
       STORE: path.join(srcPath, 'redux/store'),
@@ -55,7 +54,10 @@ module.exports = {
       include: srcPath,
       loaders: ['react-hot', 'babel?' + JSON.stringify({
         cacheDirectory: true,
-        plugins: ['transform-runtime'],
+        plugins: [
+          'transform-runtime',
+          'transform-decorators-legacy'
+        ],
         presets: ['es2015', 'react', 'stage-0'],
         env: {
           production: {

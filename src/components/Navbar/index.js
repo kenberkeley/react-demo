@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { IndexLink, Link } from 'react-router'
 import LoginForm from './LoginForm'
 import LogoutDropdown from './LogoutDropdown'
 
 /* 导航栏全局显示，控制着用户的登录注销 */
+
+@connect(
+  ({ userData }) => ({ userData }),
+  require('ACTION/user').default
+)
 export default class Navbar extends Component {
   componentWillMount () {
     console.info('[Navbar] 初始化：检查用户是否已经登录')

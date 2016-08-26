@@ -83,8 +83,7 @@
 ├─ build/            # Webpack 配置目录
 ├─ dist/             # build 生成的生产环境下的项目
 ├─ src/              # 源码目录（开发都在这里进行）
-│   ├─ components/     # 展示型组件/木偶组件（COMPONENT，全称 Presentational/dumb components）
-│   ├─ containers/     # 容器型组件/智能组件（CONTAINER，全称 Container/smart components）
+│   ├─ components/     # 组件（COMPONENT）
 │   ├─ redux/          # Redux 状态管理一箩筐
 │   │   ├─ actions/      # （ACTION）
 │   │   ├─ reducers/     # （REDUCER）

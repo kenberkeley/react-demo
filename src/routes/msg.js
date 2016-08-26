@@ -1,5 +1,11 @@
 import { injectReducer } from 'REDUCER'
-import userAuth from 'MIXIN/userAuth' // 用户访问拦截器
+import userAuth from 'UTIL/userAuth'           // 用户访问拦截器
+import makeContainer from 'UTIL/makeContainer'
+
+const connectComponent = makeContainer(
+  ({ userData, msg }) => ({ userData, msg }), // mapStateToProps
+  require('ACTION/msg').default               // mapActionCreators
+)
 
 export default {
   path: 'msg',
@@ -17,7 +23,7 @@ export default {
   indexRoute: { // 对应 /msg
     getComponent (nextState, cb) {
       require.ensure([], (require) => {
-        cb(null, require('CONTAINER/Msg/MsgList').default)
+        cb(null, connectComponent(require('COMPONENT/Msg/MsgList').default))
       }, 'msgList')
     }
   },
@@ -27,7 +33,7 @@ export default {
     path: 'detail/:msgId',
     getComponent (nextState, cb) {
       require.ensure([], (require) => {
-        cb(null, require('CONTAINER/Msg/MsgDetail').default)
+        cb(null, connectComponent(require('COMPONENT/Msg/MsgDetail').default))
       }, 'msgDetail')
     }
   },
@@ -35,7 +41,7 @@ export default {
     path: 'add',
     getComponent (nextState, cb) {
       require.ensure([], (require) => {
-        cb(null, require('CONTAINER/Msg/MsgForm').default)
+        cb(null, connectComponent(require('COMPONENT/Msg/MsgForm').default))
       }, 'msgForm')
     },
     onEnter: userAuth
@@ -44,7 +50,7 @@ export default {
     path: 'modify/:msgId',
     getComponent (nextState, cb) {
       require.ensure([], (require) => {
-        cb(null, require('CONTAINER/Msg/MsgForm').default)
+        cb(null, connectComponent(require('COMPONENT/Msg/MsgForm').default))
       }, 'msgForm')
     },
     onEnter: userAuth

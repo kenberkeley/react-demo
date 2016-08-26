@@ -1,7 +1,7 @@
 /* 入口启动文件 */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from 'CONTAINER/App'
+import App from 'COMPONENT/App'
 
 /**
  * 下面这货用于检测不必要的重新渲染，详情请看其项目地址：

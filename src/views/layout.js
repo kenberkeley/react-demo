@@ -7,16 +7,15 @@ import Navbar from 'COMPONENT/Navbar/'
 let DevTools
 if (__DEV__ && __COMPONENT_DEVTOOLS__) {
   // 组件形式的 Redux DevTools
-  DevTools = require('CONTAINER/DevTools').default
+  DevTools = require('COMPONENT/DevTools').default
 }
 
-const LayoutView = (props) => (
+const LayoutView = ({ children, location }) => (
   <div>
-    {/* 此处使用延展属性将所有 props 传给 Navbar */}
-    <Navbar {...props} />
+    <Navbar location={location} />
   
     <div className="container">
-      { props.children }
+      { children }
     </div>
 
     { DevTools && <DevTools /> }
