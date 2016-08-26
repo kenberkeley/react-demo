@@ -6,7 +6,6 @@ import LogoutDropdown from './LogoutDropdown'
 /* 导航栏全局显示，控制着用户的登录注销 */
 export default class Navbar extends Component {
   componentWillMount () {
-    // 检查用户是否已经登录
     console.info('[Navbar] 初始化：检查用户是否已经登录')
     console.info('[TIPS] 由于有Redux Logger，故之后就不手动打印动作了')
     this.props.checkLogin()
@@ -43,6 +42,11 @@ export default class Navbar extends Component {
                 <li className={location.pathname.startsWith('/msg') && 'active'}>
                   <Link to='/msg'>
                     留言板
+                  </Link>
+                </li>
+                <li className={location.pathname.startsWith('/todo') && 'active'}>
+                  <Link to='/todo'>
+                    待办事项(新功能)
                   </Link>
                 </li>
               </ul>

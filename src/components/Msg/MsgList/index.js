@@ -13,8 +13,8 @@ export default class MsgList extends Component {
     this.updateMsgList()
   }
   /**
-   * 类似于Vue中的 route > data 属性
-   * 【拓展】无限循环坑 http://stackoverflow.com/questions/36189775
+   * 类似于 Vue 中的 route: { data: Function } 属性，监听路由变化加载数据
+   * 【拓展阅读】无限循环坑 http://stackoverflow.com/questions/36189775
    */
   componentWillReceiveProps (nextProps) {
     // query string 变化
@@ -31,8 +31,8 @@ export default class MsgList extends Component {
     this.updateMsgList(nextDisplayControl)
   }
 
-  updateMsgList (displayControl =  this.props.msg.displayControl) {
-    let { pageIdx, quantity, authorSpecified:author } = displayControl
+  updateMsgList (displayControl = this.props.msg.displayControl) {
+    let { pageIdx, quantity, authorSpecified: author } = displayControl
     this.props.fetchMsg({ pageIdx, quantity, author })
   }
 

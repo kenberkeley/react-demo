@@ -2,12 +2,9 @@ import React, { Component } from 'react'
 import handleChange from 'MIXIN/handleChange'
 
 export default class LoginForm extends Component {
-  /* 实际上函数签名为constructor(props, context, {React内部不明object}) */
   constructor (props) {
     super(props)
-
-    // 设置默认值，类似于Vue的data属性
-    // P.S: 仅能在构造函数中设置state
+    // P.S: 仅能在构造函数中设置 state
     // 在其他地方绝不能使用 this.state.XXX = XXX
     // 只能使用 this.setState({ XXX: XXX })
     this.state = { username: '' }
@@ -22,8 +19,8 @@ export default class LoginForm extends Component {
   }
 
   render () {
-  /* 由于ES6中React不会自动绑定this，直接onSubmit={this.handleSubmit}会报错
-    详情请参考https://facebook.github.io/react/docs/reusable-components.html#no-autobinding */
+  /* 由于 ES6 中 React 不会自动绑定this，直接 onSubmit={this.handleSubmit} 会报错
+    详情请参考 https://facebook.github.io/react/docs/reusable-components.html#no-autobinding */
     return (
       <form
         role="search"

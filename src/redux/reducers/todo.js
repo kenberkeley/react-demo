@@ -1,9 +1,9 @@
-import { ACTION_HANDLERS } from 'ACTION/msg/msg'
+import { ACTION_HANDLERS } from 'ACTION/todo'
 import initState from 'STORE/initState'
 
-const msgs = initState.msg.msgs
+const todos = initState.todos
 
-export default function msgsReducer(state = msgs, action) {
+export default function todosReducer(state = todos, action) {
   const handler = ACTION_HANDLERS[action.type]
   return handler ? handler(state, action) : state
 }

@@ -1,34 +1,37 @@
-# React 示例项目 · 简易留言板
-
-> ### (2016/8/24) 好消息：本项目将采用 `vue-cli` 生成的模板重构，敬请期待（建议 watch）！
-> ### 实在难以忍受那些拥有复杂架构的 React 示例项目！我们要向 Vue 看齐！！！
-
-***
-
-> ### (2016/8/25) 好消息：预览版的 React Demo by vue-cli 已经放到了
-> ### `基于Vue_Demo的React_Demo预览版在此！` 目录  
-> ### 注释齐全，与 [Vue Demo][vue-demo] 高度一致，启动方式也一致，欢迎预览！
-> ### 当前正在完善 README 文档，敬请期待！
+# React 示例项目 · 简易留言板 + 待办事项
 
 ![应用截图](./screenshot.png)
 
-> ###写在前面
-> 本示例项目改自 [react-redux-starter-kit][fork-from]，主要是对项目源码架构进行了优雅的重构  
-> 设计理念与 [Vue 示例项目 · 简易留言板][vue-demo]（以下简称 Vue Demo） 高度一致  
-> （在这里，我衷心希望您能浏览 Vue Demo 的 [README][vue-demo] 来理解项目架构的思路）
-> 
-> 值得注意的是，本类项目使用 Webpack 的 [Code Splitting][code-splitting] 实现按需加载  
-> 与 [react-redux-universal-hot-example][universal] 这一类**前后端同构**项目有一定差异  
-> 最大的差异在于路由的写法，详情请参考 React Router 文档 · [动态路由][dynamic-routing]
+> ###写在前面  
+> 一直以来，我都相当纳闷：为什么 React 的那些 starter kit 都构建得那么恶心？  
+> 能不能像 [Vue Cli][vue-cli] 生成的[项目架构][vue-cli-template]般优雅？说干就干，本项目就改自 [Vue Demo][vue-demo]
 
-***
+## 目录
+#### &sect; [技术栈](#features)
+#### &sect; [快速开始](#getting-started)
+  * [安装](#installation)
+  * [启动](#start)
+
+#### &sect; [项目架构](#architecture)
+  * [目录结构](#tree)
+  * [特色](#character)
+
+#### &sect; [开发](#development)
+  * [Webpack 配置](#webpack-configure)
+  * [规范](#standard)
+  
+#### &sect; [测试](#testing)  
+#### &sect; [部署](#deployment)
+#### &sect; [参考](#reference)
+
+****
 
 ## <a name="features">&sect; 技术栈</a>
 > 详情可参阅 `package.json`
 
-* React 15.0.0
-* React Router
+* React 15.3.0
 * Redux
+* React Router
 * Ajax 请求库（Superagent / jQuery-Ajax / ...）
 * Webpack
 * ES6 + Babel
@@ -37,28 +40,32 @@
 ***
 
 ## <a name="getting-started">&sect; 快速开始</a>
-> 在开始前，您需要通读 [React 文档][react-docs]、[Redux 文档][redux-docs]、[React Router 文档][react-router-docs]  
-> 最好还把玩过 [Redux Example][redux-example] 的 Counter / Todo 这些简单的示例  
-> 如果您还对 Redux 的理解有点迷糊，推荐继续阅读 [Redux 简明教程][redux-simple-tutorial]
+在开始前，希望您已通读如下资料
 
-> 同时您还需要熟悉 ES6。例如，请把  
-> `const foo = ({ hello: { world: bar } }) => ({ bar })`  
-> 转译成 ES5（答案请自行在 [Babel REPL][babel-repl] 在线编译验证）
+* [React 文档][react-doc]
+* [Redux 文档][redux-doc]（看完后懵逼的请转看 [Redux 简明教程][simple-tutorial]）
+* [React Router 文档][react-router-doc]
+
+同时您还需要熟悉 ES6。例如，请把如下代码  
+`const foo = ({ hello: { world: bar } }) => ({ bar })`  
+转译成 ES5（答案请自行到 [Babel REPL][babel-repl] 在线编译验证）
 
 ### <a name="installation">⊙ 安装</a>
-> 推荐升级到 node 5.x + npm 3.x 环境  
+> 建议升级到 node 5.x/6.x + npm 3.x 环境  
 > 推荐使用 `cnpm` 或手动切换到淘宝 npm 源  
 > `npm set registry https://registry.npm.taobao.org/`
 
-本示例项目需要结合 [简易留言板 RESTful API][msg-board-api]  
-模拟前后端分离开发（还为了与 Vue Demo 共用）  
+本示例项目需要结合 [简易留言板 RESTful API](https://github.com/kenberkeley/msg-board-api)  
+模拟前后端分离开发（还为了与 [Vue Demo][vue-demo] 共用）  
 请分别 `git clone`，打开**两个**命令窗口（ Windows 下推荐使用 `Cygwin`）**分别**切换到两者的目录下  
 分别敲下 `npm install` 安装依赖（为避免 Windows 下的 npm 软链接问题，可加上 `--no-bin-link` 完全解构所有依赖）
 
 ### <a name="start">⊙ 启动</a>
 先后在 `msg-board-api`、`react-demo` 的命令窗口下，敲下 `npm start`  
-然后请自行访问 `localhost:3000` 即可查看 demo    
-> 开发过程中，通过 Webpack 处理的静态资源都由基于内存的 `webpack-dev-server` 提供
+如无意外，默认浏览器就会自动打开 `localhost:9090`，您立即可以看到效果  
+若浏览器没有自动弹出，则请自行手动访问  
+> 开发过程中，通过 Webpack 处理的静态资源都由基于内存的 `webpack-dev-server` 提供  
+> P.S. 如果您还不清楚如何安装与启动，请看这个 [issue][how-to-start]
 
 ***
 
@@ -66,120 +73,127 @@
 ### <a name="tree">⊙ 目录结构</a>
 ```
 .
-├── bin/                    # 命令行执行文件
-├── build/                  # Webpack 配置
-├── config/                 # 基础配置（供 Webpack 使用）
-│   ├── custom.js             # 自定义配置（用于覆盖默认配置）
-│   ├── index.js/             # 默认配置
-├── dist/                   # build 生成的生产环境下的项目
-├── server/                 # 前端开发服务器
-│   ├── public/               # 无需 Webpack 处理的静态资源目录
-│   ├── ...                   # （略）
-├── src/                    # 源码目录（开发都在这里进行）
-│   ├── components/           # 展示型组件/木偶组件（COMPONENT，全称 presentational/dumb components）
-│   ├── containers/           # 容器型组件/智能组件（CONTAINER，全称 container/smart components）
-│   ├── layouts/              # 路由布局基页（LAYOUT，对应 Vue Demo 中的 views/）
-│   ├── redux/                # Redux 相关
-│       ├── actions/            # Action 相关（按模块分离）
-│       ├── reducers/           # Reducer 相关（按模块分离）
-│       ├── createStore.js      # 
-│       ├── initState.js        # 初始化的 State 树定义
-│       ├── rootReducer.js      #
-│       ├── store.js            # 最终生成的 Store
-│   ├── routes/               # 路由（ROUTE）
-│   ├── services/             # 服务（SERVICE，直接从 Vue Demo 克隆过来的）
-│   ├── utils/                # 工具库（UTIL）
-│       ├── HOC/                # 高阶组件（HOC）
-│       ├── mixins/             # 混合（MIXIN）
-│   ├── index.html            # 入口基页
-│   ├── main.js               # 启动文件
-├── .babelrc                # Babel 转码配置
-├── .eslintignore           # （配置）ESLint 检查中需忽略的文件（夹）
-├── .eslintrc               # ESLint 配置
-├── .gitignore              # （配置）需被 Git 忽略的文件（夹）
-├── package.json            # （这个就不用多解释了吧）
+├─ build/            # Webpack 配置目录
+├─ dist/             # build 生成的生产环境下的项目
+├─ src/              # 源码目录（开发都在这里进行）
+│   ├─ components/     # 展示型组件/木偶组件（COMPONENT，全称 Presentational/dumb components）
+│   ├─ containers/     # 容器型组件/智能组件（CONTAINER，全称 Container/smart components）
+│   ├─ redux/          # Redux 状态管理一箩筐
+│   │   ├─ actions/      # （ACTION）
+│   │   ├─ reducers/     # （REDUCER）
+│   │   ├─ store/        # （STORE）
+│   ├── routes/        # 路由（ROUTE）
+│   ├── services/      # 服务（SERVICE，用于统一管理 XHR 请求，从 Vue Demo 中直接复制过来的）
+│   ├── utils/         # 工具库（UTIL）
+│   │   ├─ HOC/          # 高阶组件（HOC，全称 Higher Order Component）
+│   │   ├─ mixins/       # 混合（MIXIN）
+│   ├── views/         # 路由视图基页（VIEW）
+│   │   ├─ layout/       # 全局布局
+│   ├── app.js         # 启动文件
+│   ├── index.html     # 静态基页
+├── static/          # 放置无需经由 Webpack 处理的静态文件
+├── .babelrc         # Babel 转码配置
+├── .eslintignore    # （配置）ESLint 检查中需忽略的文件（夹）
+├── .eslintrc        # ESLint 配置
+├── .gitignore       # （配置）需被 Git 忽略的文件（夹）
+├── package.json     # （这个就不用多解释了吧）
 ```
+> 您可以根据业务需求改动目录结构。若目录使用频繁，建议配置 [路径别名](#alias)  
+> 默认的路径别名见上面目录结构注释中大写形式的常量
 
-### <a name="difference">⊙ 与 [`react-redux-starter-kit`](fork-from) 的区别</a>
-> 部分内容请参考 Vue Demo 中 [与官方示例项目的区别](vue-demo-difference)
-
-`react-redux-starter-kit` 本身的设计并不是让我特别满意  
-因此我对源码目录 `src/` 进行了彻底的重构，并对内部逻辑进行了优化  
-使其接近 Vue Demo 中的开发思维
-
-除 `src/` 外，其余的配置基本都保留了，些许的改动如下：
-* 将无需 Webpack 处理的静态资源目录移入`server/`，即 `server/public/`
-* 重命名 `config/` 下 `environment.js => custom.js`
-* Redux DevTools：提供 [页面中的组件形式][redux-devtools] 或 [Chrome 插件][redux-devtools-extension]形式 两种选择
-* 引入 [Redux Logger][redux-logger]
-
-主要删减的部分有：
-* 为了减轻单文件代码量，去除绝大部分的 `PropTypes` 校验（往后的开发最好还是写上）
-* 删除 [Redux CLI][redux-cli] 的 `blueprints/` 以及单元测试 `tests/`
-
-不管怎样，我们都兼容 `react-redux-starter-kit` 的一整套命令
-
-|`npm run <script>`|说明|
-|---|---|
-|`start`|在 `localhost:3000` 启动应用。开发过程中支持代码热更替（HMR）|
-|`compile`|编译生产环境下的项目（默认生成到 `dist/`)|
-|`dev`|跟 `start` 基本一样，但使用 `nodemon` 监听前端开发服务器 `server/` 自动重启|
-|`dev:no-debug`|跟 `dev` 基本一样，但禁用了 Redux DevTools|
-|`test`|通过 Karma 运行单元测试，生成覆盖率报告|
-|`test:dev`|Karma 监听文件改动进行单元测试，但不生成覆盖率报告|
-|`deploy`|运行代码检测（linters），单元测试（tests），若都通过则生成 `dist/`|
-|`deploy:dev`|跟 `deploy` 基本一样，但重写 `NODE_ENV` 为 `development`|
-|`deploy:prod`|跟 `deploy` 基本一样，但重写 `NODE_ENV` 为 `production`|
-|`lint`|使用 ESLint 对所有 `*.js` 文件进行代码检测|
-|`lint:fix`|比 `lint` 多了[自动修正](eslint-auto-fix)的功能|
+### <a name="character">⊙ 特色</a>
+* 本示例项目秉承最佳实践，**高度洁癖**地实现代码分离/复用
+* 优化目录结构，更好的模块分离，更接近 Vue 的开发模式
+* Redux DevTools，可选 [Chrome 插件形式][chrome-extension] 或 内嵌页面的[组件形式][devtools-component]
+* [Redux Logger][redux-logger] 打印动作及前后状态变化
+* [why-did-you-update][why-did-u-update] 检测不必要的组件重渲染
+* 引入服务层统一管理 XHR 请求（好处请参考 Vue Demo 中的 [引入服务层][service-intro]）
+* 引入 [路径别名](#alias) 实现优雅的加载模式
+* 引入 [React Hot Reload][hot-loader]，支持热替换
+* 生产环境下的编译对代码进行[优化][react-optimize]
+* 迄今为止我见过的最完美的 starter kit
 
 ***
 
-## &sect; 开发
-### ⊙ 配置
-主要讲讲 `config/index.js` 中的：  
-* `compiler_vendor`：列出项目中所用到的 库/框架 。可加快开发环境下编译的速度，也有利于生产环境下的缓存
-* `config.globals`：开发环境下的全局变量。比 `react-redux-starter-kit` 多了一个 `__EMBEDDED_DEVTOOLS__`（默认 `false`，表示不使用页面组件形式的 DevTools，而用 Chrome 插件形式）
-* `config.alias`：路径常量（详细介绍见 Vue Demo 的 [路径别名][alias]）
+## <a name="development">&sect; 开发</a>
+### <a name="webpack-configure">⊙ Webpack 配置</a>
+> 由于已经拥有相对成熟的 Webpack 配置，因此在一定程度上您可以不求甚解，但了解其配置会更能把握整体开发  
+
+* 前端开发服务器为 `localhost:9090`，可在 `build/webpack.config.dev.js` 中找到
+> 后端 RESTful API 基地址写在了 `src/services/xhr/config.js` 中，请根据实际自行修改
+
+* 框架 / 类库 须分离打包以加快开发时的编译速度并有利于缓存，详见 `build/webpack.base.conf.js` 中的 `vendor`
+
+* <a name="alias">**路径别名**</a> 的定义位于 `build/webpack.base.conf.js`，好处就是**引入与重构都很方便**
+> 例如，在某组件中，引入 `userService` 需要 `import userService from '../../../services/userService'`  
+> 但有了路径别名后，只需要 `import userService from 'SERVICE/userService'`  
+> 相比于 AngularJS 中的依赖注入，这种方式依赖于构建工具，显得更为简单  
+> 
+> 您可能会说，Webpack 只需要设定了 `root`属性为 `src/`  
+> 就可以 `import userService from 'services/userService'`  
+> 但在这里其实是会引起歧义的（不过这属于强迫症的范畴。。。）  
+> 例如，`import createBrowserHistory from 'history/lib/createBrowserHistory'`  
+> 您可能会觉得这是 `src/history/lib/createBrowserHistory.js`  
+> 但实际上 [history][history] 是一个 npm package  
+> 同样地，您又怎么知道 `services` 不是一个 npm package？  
+> 而且重构之后，文件夹的变动会导致相对路径的变化，`services/` 目录未必仍在 `src/` 下    
+> 因此，路径别名相当有必要。其**常量**的形式，让人一看就知道不是一个 npm package
+
+* 开发**全局变量**，由 `webpack.DefinePlugin` 提供（详见 `build/webpack.base.conf.js`）
+> 默认有 `__DEV__` / `__PROD__` / `__COMPONENT_DEVTOOLS__` / `__WHY_DID_YOU_UPDATE__` 四个全局变量  
+> 若要继续添加，则还需要在 `.eslintrc` 中 `globals` 同步写入
+> 
+> 在此需要提醒，在 `package.json` 中设置 `NODE_ENV` 要注意末尾空格的[问题](http://stackoverflow.com/questions/11104028/#38948727)  
+> 最好就是使用前 `trim` 一下：`process.env.NODE_ENV.trim()`
+> 
+> 拓展阅读：[解读 UglifyJS](http://rapheal.sinaapp.com/tag/uglifyjs/)  
+> 看看生产环境下编译 `if (__PROD__) { ... }` => `if (true) { ... }` 后 [UglifyJS](http://rapheal.sinaapp.com/2014/05/22/uglifyjs-squeeze/) 会如何处理
+
+
+### <a name="standard">⊙ 规范</a>
+> 本示例项目的代码极尽详细地添加了注释，其中不乏最佳实践提示
+
+为了减少代码量，我省去了 [Prop 验证][proptypes]，建议您在往后的开发中使用
 
 ***
 
-## &sect; 测试
+## <a name="testing">&sect; 测试</a>
 > 请自行选择测试工具
 
 ***
 
-## &sect; 部署
-> 详见上面 `react-redux-starter-kit` 的一整套命令表格
+## <a name="deployment">&sect; 部署</a>
+在 `react-demo` 的命令窗口下，敲下 `npm run build`，将会在项目根目录下生成 `dist/`  
+> 您可以使用命令行静态资源服务器 [serve](https://github.com/tj/serve) ( `npm i serve -g` )，敲下 `serve -p [端口] dist` 来快速查看 build 后的项目  
+> 还可以 `cd dist` 后，`python -m SimpleHTTPServer [端口]` 或 `php -S localhost:[端口]` 快速便捷地实现静态资源服务器
+>
+> 关于生产环境下的部署与优化，已超出本文档的论述范围，请自行查阅相关资料  
+> 在这里您可能需要全局安装 [rimraf](https://github.com/isaacs/rimraf)： `npm i rimraf -g`（或根据[指引](http://stackoverflow.com/questions/9679932)配置环境变量避免全局安装）
 
 ***
 
-## &sect; 拓展阅读
-
-* [Redux 简明教程][redux-simple-tutorial]
+## <a name="reference">&sect; 参考</a>
+* [Vue Demo][vue-demo]
+* [davezuko/react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit)
+* [eteplus/vue-sui-demo](https://github.com/eteplus/vue-sui-demo)
 * [探讨 React 项目目录结构](http://marmelab.com/blog/2015/12/17/react-directory-structure.html)
-* [看漫画，学 Redux](https://github.com/jasonslyvia/a-cartoon-intro-to-redux-cn)
-* [图解 Redux 与 React 的关系](http://www.oschina.net/news/72579/redux-react)
-* [知乎专栏 · pure render](https://zhuanlan.zhihu.com/purerender?topic=React)
-* [Redux 核心概念](http://www.jianshu.com/p/3334467e4b32)
 
-
-[fork-from]: https://github.com/davezuko/react-redux-starter-kit
+[vue-cli]: https://github.com/vuejs/vue-cli
+[vue-cli-template]: http://vuejs-templates.github.io/webpack/
 [vue-demo]: https://github.com/kenberkeley/vue-demo
-[code-splitting]: https://webpack.github.io/docs/code-splitting.html
-[universal]: https://github.com/erikras/react-redux-universal-hot-example
-[dynamic-routing]: http://react-guide.github.io/react-router-cn/docs/guides/advanced/DynamicRouting.html
-[react-docs]: http://reactjs.cn/react/docs/getting-started.html
-[redux-docs]: http://cn.redux.js.org/index.html
-[react-router-docs]: http://react-guide.github.io/react-router-cn/
-[redux-example]: https://github.com/reactjs/redux/tree/master/examples
-[redux-simple-tutorial]: https://github.com/kenberkeley/redux-simple-tutorial
-[babel-repl]: http://babeljs.io/repl/ 
-[msg-board-api]: https://github.com/kenberkeley/msg-board-api
-[vue-demo-difference]: https://github.com/kenberkeley/vue-demo#difference
-[redux-devtools]: https://github.com/gaearon/redux-devtools
-[redux-devtools-extension]: https://github.com/zalmoxisus/redux-devtools-extension
+[react-doc]: http://reactjs.cn/react/docs/getting-started-zh-CN.html
+[redux-doc]: http://camsong.github.io/redux-in-chinese/index.html
+[simple-tutorial]: https://github.com/kenberkeley/redux-simple-tutorial
+[react-router-doc]: http://react-guide.github.io/react-router-cn/
+[babel-repl]: http://babeljs.io/repl/
+[how-to-start]: https://github.com/kenberkeley/react-demo/issues/1
+[service-intro]: https://github.com/kenberkeley/vue-demo#service-layer
+[alias-intro]: https://github.com/kenberkeley/vue-demo#alias
+[chrome-extension]: https://github.com/zalmoxisus/redux-devtools-extension
+[devtools-component]: https://github.com/gaearon/redux-devtools
 [redux-logger]: https://github.com/evgenyrodionov/redux-logger
-[redux-cli]: https://github.com/SpencerCDixon/redux-cli
-[eslint-auto-fix]: http://eslint.org/docs/user-guide/command-line-interface.html#fix
-[alias]: https://github.com/kenberkeley/vue-demo#alias
+[why-did-u-update]: https://github.com/garbles/why-did-you-update
+[hot-loader]: https://github.com/gaearon/react-hot-loader
+[react-optimize]: https://github.com/thejameskyle/babel-react-optimize
+[history]: https://github.com/ReactTraining/history
+[proptypes]: https://facebook.github.io/react/docs/reusable-components-zh-CN.html#prop-验证

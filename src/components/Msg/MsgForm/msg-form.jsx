@@ -1,10 +1,12 @@
-// 无论有没有用到React这个变量都要导入
-// 因为这只是JSX，等到转为JS后
-// 你会看到到处都是React.createElement
+/**
+ * 无论有没有用到 React 这个变量都要导入
+ * 因为这只是 JSX，等转为 JS 后
+ * 您会看到到处都是 React.createElement
+ */
 import React from 'react'
 
-// 由于render中用是call/apply，因此这里不能使用箭头函数
-// （因为箭头函数没有自己的this！无法通过call/apply改变）
+// 由于 render 中用是 call/apply，因此这里不能使用箭头函数
+// （因为箭头函数没有自己的 this！无法通过 call/apply 改变）
 export default function () {
   return (
     <form>

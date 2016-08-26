@@ -5,13 +5,11 @@ import handleChange from 'MIXIN/handleChange'
 export default class DisplayControl extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      _quantity: props.quantity
-    }
+    this.state = { _quantity: props.quantity }
     this.handleChange = handleChange.bind(this) // mixin
   }
 
-  /*【拓展】setState的“异步”坑：https://zhuanlan.zhihu.com/p/20328570 */
+  /* 【拓展阅读】setState 的“异步”坑：https://zhuanlan.zhihu.com/p/20328570 */
   componentWillReceiveProps(nextProps) {
     if (this.state._quantity !== nextProps.quantity) {
       this.setState({ _quantity: nextProps.quantity })

@@ -1,5 +1,5 @@
-.DS_STORE
+.DS_Store
 *.log
-node_modules
-dist
 coverage
+dist
+node_modules

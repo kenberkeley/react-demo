@@ -1,8 +1,8 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
-import { store, history } from 'REDUX/store'
-import routes from 'ROUTE/'
+import { store, history } from 'STORE'
+import routes from 'ROUTE'
 
 const App = () => (
   <Provider store={store}>
@@ -12,20 +12,21 @@ const App = () => (
 
 export default App
 
-/* 
-  【拓展】
-  Provider 中传入的属性
-  可以让全体组件轻松访问
-  避免繁琐累赘的层层下传
-  
-  class XXX extends Component {
-    static contextTypes = {
-      // 组件中需要这样子声明
-      store: PropTypes.object.isRequired
-    }
-    componentDidMount () {
-      // 之后就可以这样子获取
-      this.context.store.getState() // 输出当前根state(store)树
-    }
-  }
+/**
+ * 【拓展】
+ *  Provider 中传入的属性，可以让全体组件轻松访问，避免繁琐累赘的层层下传。例子：
+ *  
+ *  class XXX extends Component {
+ *    static contextTypes = {
+ *      // 组件中需要这样子声明
+ *      store: PropTypes.object.isRequired
+ *    }
+ *    componentDidMount () {
+ *      // 之后就可以直接这样用
+ *      this.context.store.getState()
+ *    }
+ *  }
+ *  
+ *  但上面这种官方的做法实在太麻烦，于是我们有更为直接的方式：
+ *  import store from 'STORE'
 */

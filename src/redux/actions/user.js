@@ -1,9 +1,13 @@
 import userService from 'SERVICE/userService'
-/* 定义Action常量 */
-export const LOG_IN = 'LOG_IN'
-export const LOG_OUT = 'LOG_OUT'
+// ================================
+// Action Type
+// ================================
+const LOG_IN = 'LOG_IN'
+const LOG_OUT = 'LOG_OUT'
 
-/* 定义Actions Creator */
+// ================================
+// Action Creator
+// ================================
 const loginDone = (userData) => ({
   type: LOG_IN,
   payload: userData
@@ -41,14 +45,19 @@ const logout = () => {
       )
   }
 }
-/* default导出所有Actions Creator，Container就可以很方便地全部mapActionCreators */
+/* default 导出所有 Actions Creator */
 export default {
   login, checkLogin, logout
 }
 
-/* 这其实属于Reducer范畴（还记得switch-case吗）
-   但把常量export来import去很烦人，于是在这直接处理好了 */
+// ================================
+// Action handlers for Reducer
+// 本来更新 state 是 Reducer 的责任
+// 但要把 ActionType 导出又引入实在太麻烦
+// 且在 Reducer 中写 switch-case 实在太不优雅
+// 故在此直接给出处理逻辑
+// ================================
 export const ACTION_HANDLERS = {
-  [LOG_IN]  : (state, { payload }) => ({ ...state, ...payload }),
-  [LOG_OUT] : (state, action) => null
+  [LOG_IN]: (userData, { payload }) => payload, // payload is userData
+  [LOG_OUT]: () => null
 }

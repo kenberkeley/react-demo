@@ -5,9 +5,11 @@ import dateTimeFormatter from 'UTIL/dateTimeFormatter'
 import msgService from 'SERVICE/msgService'
 
 export default class MsgDetail extends Component {
-/* 有关Context的用法请看文档：https://facebook.github.io/react/docs/context.html
-  实际上可不引入 this.context.router，直接使用 this.props.history 即可
-  但 console 会报警告 Warning: [react-router] `props.history` and `context.history` are deprecated. Please use `context.router`. http://tiny.cc/router-contextchanges */
+/**
+ * 有关Context的用法请看文档：https://facebook.github.io/react/docs/context.html
+ * 实际上可不引入 this.context.router，直接使用 this.props.history 即可
+ * 但控制台会报 Warning: [react-router] `props.history` and `context.history` are deprecated. Please use `context.router`. http://tiny.cc/router-contextchanges
+ */
   static contextTypes = {
     router: PropTypes.object.isRequired
   }
@@ -18,16 +20,16 @@ export default class MsgDetail extends Component {
   }
 
   componentWillMount() {
-    // P.S: 在Vue Demo中，msg是直接从服务器中获取
-    // 而这里可以先直接从store中获取，获取不到才从服务器获取
-    // （这种情况一般是直接刷新页面后）
+    // P.S: 在 Vue Demo 中，数据都是直接从后端 API 中获取
+    // 而这里可以先直接从 state 中获取，获取不到才从服务器获取
+    // （强制刷新页面会导致 state 被清空）
     let { msg: { msgs }, params: { msgId } } = this.props
 
     let msg = msgs.filter(({ id }) => id === msgId)[0]
-    msg ? this.setState({ msg }) : this.fetchMsgNow(msgId)
+    msg ? this.setState({ msg }) : this.fetchMsgFromAPI(msgId)
   }
 
-  fetchMsgNow (msgId) {
+  fetchMsgFromAPI (msgId) {
     msgService.fetch({ msgId }).then(msg => {
       if (!msg) return this.context.router.replace('/msg')
       this.setState({ msg })
@@ -57,7 +59,7 @@ export default class MsgDetail extends Component {
             isAuthor={userData && userData.username === msg.author}
             delMsg={delMsg}
             parentName="MsgDetail">
-            <button /* 该按钮相当于Vue中的slot */
+            <button /* 该按钮相当于 Vue 中的 slot */
               className="btn btn-primary btn-xs"
               onClick={() => this.context.router.goBack()}>
               返回

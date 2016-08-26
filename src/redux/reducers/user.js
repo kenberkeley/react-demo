@@ -1,5 +1,5 @@
 import { ACTION_HANDLERS } from 'ACTION/user'
-import initState from 'REDUX/initState'
+import initState from 'STORE/initState'
 
 const userData = initState.userData
 

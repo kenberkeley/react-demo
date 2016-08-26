@@ -21,6 +21,7 @@ export default class LogoutDropdown extends Component {
             欢迎您，{ this.props.userData.username }
             <strong className="caret"></strong>
           </a>
+          
           <ul className="dropdown-menu">
             <li onClick={() => this.logout()}>
               <a href="javascript:;">
