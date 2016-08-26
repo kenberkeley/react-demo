@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
 import msgService from 'SERVICE/msgService'
 import handleChange from 'MIXIN/handleChange'
 import tpl from './msg-form.jsx' // 分拆写JSX模板以减少单文件代码量
@@ -12,10 +11,6 @@ const getInitState = () => ({ id: '', title: '', content: '' })
    因此需要判断当前是“新增模式”还是“修改模式” */
 const isAddMode = pathname => pathname.startsWith('/msg/add')
 
-@connect(
-  ({ userData, msg }) => ({ userData, msg }),
-  require('ACTION/msg').default
-)
 export default class MsgForm extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired

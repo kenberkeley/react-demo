@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import Pagination from './Pagination'
 import NoticeBar from './NoticeBar'
@@ -7,10 +6,6 @@ import DisplayControl from './DisplayControl'
 import OptBtnGroup from 'COMPONENT/Msg/OptBtnGroup'
 import dateTimeFormatter from 'UTIL/dateTimeFormatter'
 
-@connect(
-  ({ userData, msg }) => ({ userData, msg }),
-  require('ACTION/msg').default
-)
 export default class MsgList extends Component {
   componentWillMount () {
     let { author } = this.props.location.query

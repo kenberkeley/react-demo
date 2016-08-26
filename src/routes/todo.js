@@ -1,4 +1,5 @@
 import { injectReducer } from 'REDUCER'
+import makeContainer from 'UTIL/makeContainer'
 
 export default {
   path: 'todo',
@@ -13,10 +14,18 @@ export default {
   indexRoute: {
     getComponent (nextState, cb) {
       require.ensure([], (require) => {
+        // 注入 Reducer
         injectReducer('todos', require('REDUCER/todo').default)
 
-        cb(null, require('COMPONENT/todo').default)
-      }, 'todoIndex')
+        /* 组件连接 state */
+        const TodoContainer = makeContainer(
+          ({ todos }) => ({ todos }),        // mapStateToProps,
+          require('ACTION/todo').default,    // mapActionCreators,
+          require('COMPONENT/Todo/').default // 木偶组件
+        )
+
+        cb(null, TodoContainer)
+      }, 'todo')
     }
   }
 }

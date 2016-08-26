@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import TodoInput from './TodoInput'
 import dateTimeFormatter from 'UTIL/dateTimeFormatter'
 
-@connect(
-  ({ todos }) => ({ todos }),
-  require('ACTION/todo').default
-)
 export default class Todo extends Component {
-
   delTodo (todoId) {
     if (!confirm('确认删除？')) return
     this.props.delTodo(todoId)
