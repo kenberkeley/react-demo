@@ -1,4 +1,4 @@
-import store from 'STORE'
+import { store, history } from 'STORE'
 
 /**
  * 用户访问权限拦截器
@@ -10,7 +10,8 @@ export default function userAuth(nextState, replace, next) {
   if (userData) return next()
 
   alert('请先登录后再访问')
-  next(replace('/msg'))
+  history.goBack()
+  // next(replace('/loginPage')) # 举例：跳转到登录页的写法
 }
 
 /* 

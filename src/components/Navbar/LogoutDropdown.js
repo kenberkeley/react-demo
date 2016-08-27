@@ -1,14 +1,11 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import { withRouter } from 'react-router' // v2.4 新增的 HoC
 
-export default class LogoutDropdown extends Component {
-  static contextTypes = {
-    router: PropTypes.object.isRequired
-  }
-
+class LogoutDropdown extends Component {
   logout () {
     // 退出登录后直接返回首页
     this.props.logout()
-    this.context.router.replace('/')
+    this.props.router.replace('/')
   }
 
   render () {
@@ -34,3 +31,5 @@ export default class LogoutDropdown extends Component {
     )
   }
 }
+
+export default withRouter(LogoutDropdown)

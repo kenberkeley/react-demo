@@ -1,5 +1,5 @@
 import React from 'react'
-import ExampleHOC from 'HOC/ExampleHOC'
+import ExampleHoC from 'HOC/ExampleHoC'
 
 const Pagination = ({ msgsLen, pageIdx, quantity, goPrevPage, goNextPage }) => (
   <nav>
@@ -30,4 +30,4 @@ const Pagination = ({ msgsLen, pageIdx, quantity, goPrevPage, goNextPage }) => (
   </nav>
 )
 
-export default ExampleHOC(Pagination)
+export default ExampleHoC(Pagination)

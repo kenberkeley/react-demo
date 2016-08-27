@@ -6,7 +6,7 @@ import LogoutDropdown from './LogoutDropdown'
 
 /* 导航栏全局显示，控制着用户的登录注销 */
 
-@connect(
+@connect( // 功能同 UTIL/makeContainer
   ({ userData }) => ({ userData }),
   require('ACTION/user').default
 )
@@ -18,7 +18,11 @@ export default class Navbar extends Component {
   }
 
   render () {
-    let { userData, login, logout, location } = this.props
+    let {
+      userData, login, logout, // 通过 connect 获取
+      location: { pathname }   // 通过 LayoutView 传入
+    } = this.props
+
     return (
       <div className="row clearfix">
         <div className="col-md-12 column">
@@ -40,17 +44,17 @@ export default class Navbar extends Component {
             </div>
             <div className="collapse navbar-collapse" id="nav-collapse">
               <ul className="nav navbar-nav">
-                <li className={location.pathname === '/' && 'active'}>
+                <li className={pathname === '/' && 'active'}>
                   <IndexLink to='/'>
                     欢迎页
                   </IndexLink>
                 </li>
-                <li className={location.pathname.startsWith('/msg') && 'active'}>
+                <li className={pathname.startsWith('/msg') && 'active'}>
                   <Link to='/msg'>
                     留言板
                   </Link>
                 </li>
-                <li className={location.pathname.startsWith('/todo') && 'active'}>
+                <li className={pathname.startsWith('/todo') && 'active'}>
                   <Link to='/todo'>
                     待办事项(新功能)
                   </Link>

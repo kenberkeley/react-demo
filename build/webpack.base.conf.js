@@ -40,7 +40,7 @@ module.exports = {
       ROUTE: path.join(srcPath, 'routes'),
       SERVICE: path.join(srcPath, 'services'),
       UTIL: path.join(srcPath, 'utils'),
-      HOC: path.join(srcPath, 'utils/HOC'),
+      HOC: path.join(srcPath, 'utils/HoC'),
       MIXIN: path.join(srcPath, 'utils/mixins'),
       VIEW: path.join(srcPath, 'views')
     }

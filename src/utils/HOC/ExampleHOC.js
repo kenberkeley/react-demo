@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
 /* 高阶组件 High Order Component 例子 */
-const ExampleHOC = WrappedComponent => class extends Component {
+const ExampleHoC = WrappedComponent => class extends Component {
   componentWillMount() {
-    console.info('[HOC] componentWillMount')
+    console.info('[HoC] componentWillMount')
   }
 
   componentDidMount() {
-    console.info('[HOC] componentDidMount')
+    console.info('[HoC] componentDidMount')
   }
 
   render () {
@@ -15,4 +15,11 @@ const ExampleHOC = WrappedComponent => class extends Component {
   }
 }
 
-export default ExampleHOC
+export default ExampleHoC
+
+/**
+ *【拓展】
+ * React Router 2.4 新增 withRouter 这个 HoC
+ * 这是除 context 外另一种获取 router 的推荐方式
+ * https://github.com/reactjs/react-router/blob/master/upgrade-guides/v2.4.0.md
+ */

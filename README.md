@@ -84,14 +84,14 @@
 ├─ dist/             # build 生成的生产环境下的项目
 ├─ src/              # 源码目录（开发都在这里进行）
 │   ├─ components/     # 组件（COMPONENT）
-│   ├─ redux/          # Redux 状态管理一箩筐
+│   ├─ redux/          # Redux 一箩筐
 │   │   ├─ actions/      # （ACTION）
 │   │   ├─ reducers/     # （REDUCER）
 │   │   ├─ store/        # （STORE）
 │   ├── routes/        # 路由（ROUTE）
-│   ├── services/      # 服务（SERVICE，用于统一管理 XHR 请求，从 Vue Demo 中直接复制过来的）
+│   ├── services/      # 服务（SERVICE，用于统一管理 XHR 请求，这是从 Vue Demo 中直接复制过来的）
 │   ├── utils/         # 工具库（UTIL）
-│   │   ├─ HOC/          # 高阶组件（HOC，全称 Higher Order Component）
+│   │   ├─ HoC/          # 高阶组件（HOC，全称 Higher Order Component）
 │   │   ├─ mixins/       # 混合（MIXIN）
 │   ├── views/         # 路由视图基页（VIEW）
 │   │   ├─ layout/       # 全局布局
@@ -104,6 +104,14 @@
 ├── .gitignore       # （配置）需被 Git 忽略的文件（夹）
 ├── package.json     # （这个就不用多解释了吧）
 ```
+
+在这里您可能会问：怎么没有 `containers/` 目录？  
+在我的理解里，木偶组件与智能组件最大的差别在于：  
+前者的状态是通过父组件传入获得，而后者是直接**连接**到 `state` 获得  
+亦即：若一个木偶组件直接**连接**到 `state`，那么它就是一个所谓的智能组件  
+详见 [`src/utils/makeContainer.js`][makeContainer] 中对 `react-redux` 的 [`connect`][connect] 函数的封装  
+本示例项目唯一在组件的定义中自行使用 `connect` 函数的是 [`Navbar`][Navbar] 组件（且用到了 ES7 的装饰器）
+
 > 您可以根据业务需求改动目录结构。若目录使用频繁，建议配置 [路径别名](#alias)  
 > 默认的路径别名见上面目录结构注释中大写形式的常量
 
@@ -183,7 +191,6 @@
 ## <a name="reference">&sect; 参考</a>
 * [Vue Demo][vue-demo]
 * [davezuko/react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit)
-* [eteplus/vue-sui-demo](https://github.com/eteplus/vue-sui-demo)
 * [探讨 React 项目目录结构](http://marmelab.com/blog/2015/12/17/react-directory-structure.html)
 
 [vue-cli]: https://github.com/vuejs/vue-cli
@@ -197,6 +204,9 @@
 [how-to-start]: https://github.com/kenberkeley/react-demo/issues/1
 [service-intro]: https://github.com/kenberkeley/vue-demo#service-layer
 [alias-intro]: https://github.com/kenberkeley/vue-demo#alias
+[makeContainer]: https://github.com/kenberkeley/react-demo/blob/master/src/utils/makeContainer.js
+[Navbar]: https://github.com/kenberkeley/react-demo/blob/master/src/components/Navbar/index.js
+[connect]: https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options
 [chrome-extension]: https://github.com/zalmoxisus/redux-devtools-extension
 [devtools-component]: https://github.com/gaearon/redux-devtools
 [redux-logger]: https://github.com/evgenyrodionov/redux-logger
