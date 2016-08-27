@@ -109,7 +109,7 @@
 在我的理解里，木偶组件与智能组件最大的差别在于：  
 前者的状态是通过父组件传入获得，而后者是直接**连接**到 `state` 获得  
 亦即：若一个木偶组件直接**连接**到 `state`，那么它就是一个所谓的智能组件  
-详见 [`src/utils/makeContainer.js`][makeContainer] 中对 `react-redux` 的 [`connect`][connect] 函数的封装  
+（详见 [`src/utils/makeContainer.js`][makeContainer] 中对 `react-redux` 的 [`connect`][connect] 函数的封装）  
 本示例项目唯一在组件的定义中自行使用 `connect` 函数的是 [`Navbar`][Navbar] 组件（且用到了 ES7 的装饰器）
 
 > 您可以根据业务需求改动目录结构。若目录使用频繁，建议配置 [路径别名](#alias)  
