@@ -8,6 +8,6 @@ import { connect } from 'react-redux'
  * @return {Connect : Container}
  */
 export default function makeContainer(mapStateToProps, mapActionCreators, component) {
-  var connectComponent = connect(mapStateToProps, mapActionCreators)
+  const connectComponent = connect(mapStateToProps, mapActionCreators)
   return component ? connectComponent(component) : connectComponent
 }
