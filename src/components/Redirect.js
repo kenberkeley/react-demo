@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import { withRouter } from 'react-router' // v2.4 新增的 HoC
 /**
  * 设计初衷：
  *   replaceState 的 API 被废弃
@@ -12,13 +13,9 @@ import React, { Component, PropTypes } from 'react'
  * 在 JSX 中：<Link to="/redirect?dest=/foo">重载本页</Link>
  * 在 JS 中：this.context.router.replace('/redirect?dest=/foo')
  */
-export default class Redirect extends Component {
-  static contextTypes = {
-    router: PropTypes.object.isRequired
-  }
-
+class Redirect extends Component {
   componentWillMount() {
-    this.context.router.replace(
+    this.props.router.replace( // 可以直接通过 props 获取 router
       this.props.location.query.dest
     )
   }
@@ -28,3 +25,5 @@ export default class Redirect extends Component {
     return null
   }
 }
+
+export default withRouter(Redirect)

@@ -11,7 +11,6 @@ export default class MsgDetail extends Component {
  * 但控制台会报 Warning: [react-router] `props.history` and `context.history` are deprecated. Please use `context.router`. http://tiny.cc/router-contextchanges
  */
   static contextTypes = {
-    // 在 Navbar 组件中用到另一种在组件获取 router 的方式：https://github.com/reactjs/react-router/blob/master/upgrade-guides/v2.4.0.md
     router: PropTypes.object.isRequired
   }
 

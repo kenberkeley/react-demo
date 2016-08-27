@@ -22,4 +22,6 @@ export default ExampleHoC
  * React Router 2.4 新增 withRouter 这个 HoC
  * 这是除 context 外另一种获取 router 的推荐方式
  * https://github.com/reactjs/react-router/blob/master/upgrade-guides/v2.4.0.md
+ *
+ * 本项目中的 Redirect 组件用到了该高阶组件
  */
