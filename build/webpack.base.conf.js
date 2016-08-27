@@ -19,8 +19,8 @@ module.exports = {
       'react-router',
       'react-router-redux',
       'redux',
-      'redux-thunk',
-      'superagent'
+      'redux-thunk'
+      // 'superagent'
     ]
   },
   output: {
@@ -91,6 +91,9 @@ module.exports = {
       names: ['vendor', 'mainifest']
     }),
     new webpack.DefinePlugin({
+      'process.env': { // 这是给 React / Redux 打包用的
+        NODE_ENV: JSON.stringify('production')
+      },
       // ================================
       // 配置开发全局常量
       // ================================
