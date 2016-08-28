@@ -103,8 +103,8 @@ module.exports = {
       // ================================
       // 配置开发全局常量
       // ================================
-      __DEV__: process.env.NODE_ENV === 'development',
-      __PROD__: process.env.NODE_ENV === 'production',
+      __DEV__: process.env.NODE_ENV.trim() === 'development',
+      __PROD__: process.env.NODE_ENV.trim() === 'production',
       __COMPONENT_DEVTOOLS__: false, // 是否使用组件形式的 Redux DevTools
       __WHY_DID_YOU_UPDATE__: false // 是否检测不必要的组件重渲染
     })

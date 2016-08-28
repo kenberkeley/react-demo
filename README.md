@@ -5,6 +5,9 @@
 > ###写在前面  
 > 一直以来，我都相当纳闷：为什么 React 的那些 starter kit 都构建得那么恶心？  
 > 能不能像 [Vue Cli][vue-cli] 生成的[项目架构][vue-cli-template]般优雅？说干就干，本项目就改自 [Vue Demo][vue-demo]
+> 
+> ### 更新
+> 2016/8/28 &nbsp; 引入 `cross-env` 解决跨平台问题，新增优化项 `DedupePlugin`
 
 ## 目录
 #### &sect; [技术栈](#features)
