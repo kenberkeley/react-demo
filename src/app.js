@@ -14,6 +14,12 @@ if (__DEV__ && __WHY_DID_YOU_UPDATE__) {
   const { whyDidYouUpdate } = require('why-did-you-update')
   whyDidYouUpdate(React)
 }
+if (__DEV__) {
+  console.info('[当前环境] 开发环境')
+}
+if (__PROD__) {
+  console.info('[当前环境] 生产环境')
+}
 
 // ================================
 // 将根组件挂载到 DOM，启动！

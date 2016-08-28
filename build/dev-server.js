@@ -1,5 +1,4 @@
-var path = require('path'),
-  express = require('express'),
+var express = require('express'),
   webpack = require('webpack'),
   // favicon = require('express-favicon'),
   config = require('./webpack.dev.conf'),
@@ -8,7 +7,7 @@ var path = require('path'),
 var compiler = webpack(config);
 
 // for highly stable resources
-app.use('/static', express.static(path.join(__dirname, '../static')));
+app.use('/static', express.static(config.commonPath.staticDir));
 
 // app.use(favicon(path.join(__dirname, '../favicon.ico')));
 
@@ -25,10 +24,10 @@ app.use(require('webpack-dev-middleware')(compiler, {
 // compilation error display
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.listen(9000, '127.0.0.1', function(err) {
+app.listen(8000, '127.0.0.1', function(err) {
   if (err) {
     console.log(err);
     return;
   }
-  console.log('Listening at http://127.0.0.1:9000');
+  console.log('Listening at http://127.0.0.1:8000');
 });

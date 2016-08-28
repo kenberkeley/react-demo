@@ -35,7 +35,7 @@ config.plugins = (config.plugins || []).concat([
   new ExtractTextPlugin('[name].css'),
   new HtmlWebpackPlugin({
     filename: 'index.html',
-    template: 'src/index.html',
+    template: config.commonPath.indexHTML,
     chunksSortMode: 'none'
   }),
   new BrowserSyncPlugin({

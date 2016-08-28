@@ -1,11 +1,17 @@
 var path = require('path'),
   webpack = require('webpack');
 
-var srcPath = path.resolve(__dirname, '../src');
+var src = path.resolve(__dirname, '../src'); // 源码目录
+var commonPath = {
+  dist: path.resolve(__dirname, '../dist'), // build 后输出目录
+  indexHTML: path.join(src, 'index.html'), // 入口基页
+  staticDir: path.resolve(__dirname, '../static') // 无需处理的静态资源目录
+};
 
 module.exports = {
+  commonPath: commonPath,
   entry: {
-    app: path.join(srcPath, 'app.js'),
+    app: path.join(src, 'app.js'),
 
     // ================================
     // 框架 / 类库 分离打包
@@ -24,7 +30,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, '../dist/static'),
+    path: path.join(commonPath.dist, 'static'),
     publicPath: '/static/'
   },
   resolve: {
@@ -33,16 +39,16 @@ module.exports = {
       // ================================
       // 自定义路径别名
       // ================================
-      COMPONENT: path.join(srcPath, 'components'),
-      ACTION: path.join(srcPath, 'redux/actions'),
-      REDUCER: path.join(srcPath, 'redux/reducers'),
-      STORE: path.join(srcPath, 'redux/store'),
-      ROUTE: path.join(srcPath, 'routes'),
-      SERVICE: path.join(srcPath, 'services'),
-      UTIL: path.join(srcPath, 'utils'),
-      HOC: path.join(srcPath, 'utils/HoC'),
-      MIXIN: path.join(srcPath, 'utils/mixins'),
-      VIEW: path.join(srcPath, 'views')
+      COMPONENT: path.join(src, 'components'),
+      ACTION: path.join(src, 'redux/actions'),
+      REDUCER: path.join(src, 'redux/reducers'),
+      STORE: path.join(src, 'redux/store'),
+      ROUTE: path.join(src, 'routes'),
+      SERVICE: path.join(src, 'services'),
+      UTIL: path.join(src, 'utils'),
+      HOC: path.join(src, 'utils/HoC'),
+      MIXIN: path.join(src, 'utils/mixins'),
+      VIEW: path.join(src, 'views')
     }
   },
   resolveLoader: {
@@ -51,7 +57,7 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.(js|jsx)$/,
-      include: srcPath,
+      include: src,
       loaders: ['react-hot', 'babel?' + JSON.stringify({
         cacheDirectory: true,
         plugins: [

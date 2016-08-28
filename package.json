@@ -4,8 +4,8 @@
   "author": "Ken Berkeley <kenberkeley@foxmail.com>",
   "version": "0.1.0",
   "scripts": {
-    "start": "set NODE_ENV=development&& node build/dev-server.js",
-    "build": "set NODE_ENV=production&& rimraf dist && webpack --progress --hide-modules --config build/webpack.prod.conf.js"
+    "start": "cross-env NODE_ENV=development node build/dev-server.js",
+    "build": "cross-env NODE_ENV=production && webpack --progress --hide-modules --config build/webpack.prod.conf.js"
   },
   "repository": {
     "type": "git",

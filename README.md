@@ -60,12 +60,13 @@
 请分别 `git clone`，打开**两个**命令窗口（ Windows 下推荐使用 `Cygwin`）**分别**切换到两者的目录下  
 分别敲下 `npm install` 安装依赖（为避免 Windows 下的 npm 软链接问题，可加上 `--no-bin-link` 完全解构所有依赖）
 
-
 > 虽然我们已经切换到了淘宝 npm 源，但安装 `node-sass@3.8.0` 的时候还是很有可能卡住  
 > 因为它的安装需要从 Github 的 AWS 服务器拉取二进制文件，因此您可以为它指定源：  
 > `npm i node-sass@3.8.0 --registry=https://registry.npm.taobao.org`
 > 
 > 如果您想简单粗暴一点，[这里](http://pan.baidu.com/s/1o8eu4t0)还提供了 `node_modules.zip`，直接解压即可
+
+最后需要全局安装跨平台环境配置器：`npm i cross-env -g`
 
 ### <a name="start">⊙ 启动</a>
 先后在 `msg-board-api`、`react-demo` 的命令窗口下，敲下 `npm start`  
