@@ -6,6 +6,7 @@ const xhr = ({ url, body = null, method = 'get' }) => {
   return new Promise((resolve, reject) => {
     request[method.toLowerCase()](rootPath + url)
       .send(body)
+      // 跨域允许带上 cookie（http://visionmedia.github.io/superagent/#cors）
       // .withCredentials()
       .end((err, re) => {
         if (err)

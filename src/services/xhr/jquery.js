@@ -7,6 +7,9 @@ const xhr = ({ url, body = null, method = 'get' }) => {
     type: method,
     url: rootPath + url,
     data: body
+    // xhrFields: { // 跨域允许带上 cookie
+    //   withCredentials: [域名]
+    // }
   })
   .done(defer.resolve)
   .fail(errHandler)
