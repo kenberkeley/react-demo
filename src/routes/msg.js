@@ -1,8 +1,8 @@
 import { injectReducer } from 'REDUCER'
 import userAuth from 'UTIL/userAuth'           // 用户访问拦截器
-import makeContainer from 'UTIL/makeContainer'
+import createContainer from 'UTIL/createContainer'
 
-const connectComponent = makeContainer(
+const connectComponent = createContainer(
   ({ userData, msg }) => ({ userData, msg }), // mapStateToProps
   require('ACTION/msg').default               // mapActionCreators
 )

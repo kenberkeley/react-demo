@@ -110,11 +110,13 @@
 ```
 
 在这里您可能会问：怎么没有 `containers/` 目录？  
-在我的理解里，木偶组件与智能组件最大的差别在于：  
+在本项目中，木偶组件与智能组件最大的差别在于：  
 前者的状态是通过父组件传入获得，而后者是直接**连接**到 `state` 获得  
 亦即：若一个木偶组件直接**连接**到 `state`，那么它就是一个所谓的智能组件  
-（详见 [`src/utils/makeContainer.js`][makeContainer] 中对 `react-redux` 的 [`connect`][connect] 函数的封装）  
+（详见 [`src/utils/createContainer.js`][createContainer] 中对 `react-redux` 的 [`connect`][connect] 函数的封装）  
 本示例项目唯一在组件的定义中自行使用 `connect` 函数的是 [`Navbar`][Navbar] 组件（且用到了 ES7 的装饰器）
+
+有关木偶组件与智能组件更为精确的论述，推荐 Redux 作者 Dan 的[这篇文章][dan-post]，避免教条主义
 
 > 您可以根据业务需求改动目录结构。若目录使用频繁，建议配置 [路径别名](#alias)  
 > 默认的路径别名见上面目录结构注释中大写形式的常量
@@ -207,9 +209,10 @@
 [how-to-start]: https://github.com/kenberkeley/react-demo/issues/1
 [service-intro]: https://github.com/kenberkeley/vue-demo#service-layer
 [alias-intro]: https://github.com/kenberkeley/vue-demo#alias
-[makeContainer]: https://github.com/kenberkeley/react-demo/blob/master/src/utils/makeContainer.js
+[createContainer]: https://github.com/kenberkeley/react-demo/blob/master/src/utils/createContainer.js
 [Navbar]: https://github.com/kenberkeley/react-demo/blob/master/src/components/Navbar/index.js
 [connect]: https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options
+[dan-post]: https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
 [chrome-extension]: https://github.com/zalmoxisus/redux-devtools-extension
 [devtools-component]: https://github.com/gaearon/redux-devtools
 [redux-logger]: https://github.com/evgenyrodionov/redux-logger

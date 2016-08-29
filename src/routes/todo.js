@@ -1,5 +1,5 @@
 import { injectReducer } from 'REDUCER'
-import makeContainer from 'UTIL/makeContainer'
+import createContainer from 'UTIL/createContainer'
 
 export default {
   path: 'todo',
@@ -18,7 +18,7 @@ export default {
         injectReducer('todos', require('REDUCER/todo').default)
 
         /* 组件连接 state */
-        const TodoContainer = makeContainer(
+        const TodoContainer = createContainer(
           ({ todos }) => ({ todos }),        // mapStateToProps,
           require('ACTION/todo').default,    // mapActionCreators,
           require('COMPONENT/Todo/').default // 木偶组件

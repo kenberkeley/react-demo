@@ -1,5 +1,5 @@
-import makeReducer from 'UTIL/makeReducer'
+import createReducer from 'UTIL/createReducer'
 import { ACTION_HANDLERS } from 'ACTION/msg/msg'
 import initState from 'STORE/initState'
 
-export default makeReducer(initState.msg.msgs, ACTION_HANDLERS)
+export default createReducer(initState.msg.msgs, ACTION_HANDLERS)
