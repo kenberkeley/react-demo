@@ -1,5 +1,4 @@
 import xhr from './jquery'
-// import xhr from './superagent'
 
 /**
  * XHR请求接口定义
