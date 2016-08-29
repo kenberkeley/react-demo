@@ -79,7 +79,8 @@ export default class MsgForm extends Component {
   }
 
   /* 同样地，提交表单前需要根据当前 mode 进行对应的操作 */
-  handleSubmit () {
+  handleSubmit (evt) {
+    evt.preventDefault()
     let { pathname } = this.props.location
     let opt = isAddMode(pathname) ? 'addMsg' : 'modMsg'
 

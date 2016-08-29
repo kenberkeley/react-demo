@@ -9,7 +9,7 @@ import React from 'react'
 // （因为箭头函数没有自己的 this！无法通过 call/apply 改变）
 export default function () {
   return (
-    <form>
+    <form onSubmit={(e) => this.handleSubmit(e)}>
       <div className="form-group">
         <label htmlFor="title">标题</label>
         <input
@@ -45,9 +45,8 @@ export default function () {
         </div>
         <div className="btn-group" role="group">
           <button
-            type="button"
-            className="btn btn-success"
-            onClick={() => this.handleSubmit()}>
+            type="submit"
+            className="btn btn-success">
             提交&nbsp;
             <span className="glyphicon glyphicon-ok"></span>
           </button>
