@@ -19,7 +19,7 @@ const asyncReducers = {}
 /**
  * @return {Function} rootReducer
  */
-export function makeRootReducer() {
+export function createRootReducer() {
   return combineReducers({
     ...syncReducers,
     ...asyncReducers
@@ -33,5 +33,5 @@ export function makeRootReducer() {
  */
 export function injectReducer(key, reducer) {
   asyncReducers[key] = reducer
-  store.replaceReducer(makeRootReducer()) // 替换当前的 rootReducer
+  store.replaceReducer(createRootReducer()) // 替换当前的 rootReducer
 }

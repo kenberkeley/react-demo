@@ -3,7 +3,7 @@ import createBrowserHistory from 'history/lib/createBrowserHistory'
 import { applyMiddleware, compose, createStore } from 'redux'
 import { useRouterHistory } from 'react-router'
 import thunk from 'redux-thunk'
-import { makeRootReducer } from 'REDUCER'
+import { createRootReducer } from 'REDUCER'
 
 // ========================================================
 // 浏览器 history 配置
@@ -49,7 +49,7 @@ if (__DEV__) {
 // 实例化 Store
 // ======================================================
 export const store = createStore(
-  makeRootReducer(),
+  createRootReducer(),
   window.__INITIAL_STATE__ || {}, // 前后端同构（服务端渲染）数据同步
   compose(
     applyMiddleware(...middlewares),
