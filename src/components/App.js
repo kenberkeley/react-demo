@@ -29,4 +29,5 @@ export default App
  *  
  *  但上面这种官方的做法实在太麻烦，于是我们有更为直接的方式：
  *  import store from 'STORE'
+ *  store.getState() // 注意：此仅为只读，更改 state 只能通过 dispatch
 */

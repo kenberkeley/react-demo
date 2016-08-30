@@ -7,7 +7,8 @@
 > 能不能像 [Vue Cli][vue-cli] 生成的[项目架构][vue-cli-template]般优雅？说干就干，本项目就改自 [Vue Demo][vue-demo]
 > 
 > ### 更新
-> 2016/8/28 &nbsp; 引入 `cross-env` 解决跨平台问题，新增优化项 `DedupePlugin`
+> 2016/8/28 &nbsp; 引入 `cross-env` 解决跨平台问题，新增优化项 `DedupePlugin`  
+> 2016/8/29 &nbsp; 重命名 `makeContainer / makeReducer.js => createContainer / createReducer.js`
 
 ## 目录
 #### &sect; [技术栈](#features)
@@ -22,6 +23,7 @@
 #### &sect; [开发](#development)
   * [Webpack 配置](#webpack-configure)
   * [规范](#standard)
+  * [性能](#performance)
   
 #### &sect; [测试](#testing)  
 #### &sect; [部署](#deployment)
@@ -176,6 +178,14 @@
 > 本示例项目的代码极尽详细地添加了注释，其中不乏最佳实践提示
 
 为了减少代码量，我省去了 [Prop 验证][proptypes]，建议您在往后的开发中使用
+
+### <a name="performance">⊙ 性能</a>
+大概可参阅如下文章：
+
+* React 文档 · [Advanced Performance](https://facebook.github.io/react/docs/advanced-performance.html)
+* 反鸡汤 · [Should I use shouldComponentUpdate](http://jamesknelson.com/should-i-use-shouldcomponentupdate/)（[译文](http://www.infoq.com/cn/news/2016/07/react-shouldComponentUpdate)）
+* 淘宝 FED · [高性能 React 组件](http://taobaofed.org/blog/2016/08/12/optimized-react-components/)
+* 腾讯 Dev Club · [React 移动 Web 极致优化](http://dev.qq.com/topic/579083d1c9da73584b02587d)
 
 ***
 
