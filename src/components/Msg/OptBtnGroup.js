@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
-/* 本组件全称Operation Button Group，操作按钮组 */
+/* 本组件全称 Operation Button Group，操作按钮组 */
 export default class OptBtnGroup extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired

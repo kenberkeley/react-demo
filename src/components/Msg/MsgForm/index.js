@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import msgService from 'SERVICE/msgService'
 import handleChange from 'MIXIN/handleChange'
-import tpl from './msg-form.jsx' // 分拆写JSX模板以减少单文件代码量
+import tpl from './msg-form.jsx' // 分拆写 JSX 模板以减少单文件代码量
 
 /* 为什么不直接 const initState = { ... } 而是用函数返回呢？
-   皆因直接传initState仅是传引用，initState 本身可被修改 */
+   皆因直接传 initState 仅是传引用，initState 本身可被修改 */
 const getInitState = () => ({ id: '', title: '', content: '' })
 
 /* 由于本组件由 /msg/add 与 /msg/:msgId 所公用

@@ -1,7 +1,7 @@
 import xhr from './xhr/'
 
 /**
- * 对应后端涉及到用户认证的API
+ * 对应后端涉及到用户认证的 API
  */
 class UserService {
 
@@ -10,7 +10,6 @@ class UserService {
   }
 
   /**
-   * P.S. 凡是服务都传对象，不要直接传值（规范）
    * @param  {Object} userData
    * @return {Promise}
    */
@@ -28,5 +27,5 @@ class UserService {
 
 }
 
-// 单例模式
+// 实例化后再导出
 export default new UserService()

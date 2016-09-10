@@ -1,8 +1,9 @@
 // ================================
 // Action Type
 // ================================
-export const ADD_TODO = 'ADD_TODO'
-export const DEL_TODO = 'DEL_TODO'
+const ADD_TODO = 'ADD_TODO'
+const DEL_TODO = 'DEL_TODO'
+const TOGGLE_TODO = 'TOGGLE_TODO'
 
 // ================================
 // Action Creator
@@ -12,8 +13,14 @@ const addTodo = (content) => ({
   payload: {
     id: setTimeout(() => {}), // 生成唯一 ID 的一种方式
     content,
+    completed: false,
     createdAt: Date.now()
   }
+})
+
+const toggleTodo = (todoId) => ({
+  type: TOGGLE_TODO,
+  payload: todoId
 })
 
 const delTodo = (todoId) => ({
@@ -26,7 +33,7 @@ export default {
   // 虽然是同步的函数，但请不要自行 bindActionCreators
   // 皆因调用 connect 后，react-redux 已经帮我们做了，见：
   // https://github.com/reactjs/react-redux/blob/master/src/utils/wrapActionCreators.js
-  addTodo, delTodo
+  addTodo, toggleTodo, delTodo
 }
 
 // ================================
@@ -38,7 +45,10 @@ export default {
 // ================================
 export const ACTION_HANDLERS = {
   [ADD_TODO]: (todos, { payload }) => [ ...todos, payload ],
-  [DEL_TODO]: (todos, { payload }) => todos.filter(
-    todo => todo.id !== payload // payload is todoId
+  [TOGGLE_TODO]: (todos, { payload: todoId }) => todos.map(
+    todo => todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
+  ),
+  [DEL_TODO]: (todos, { payload: todoId }) => todos.filter(
+    todo => todo.id !== todoId
   )
 }

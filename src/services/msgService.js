@@ -1,13 +1,13 @@
 import xhr from './xhr/'
 /**
- * 对应后端的/msg/*所有API
+ * 对应后端的 /msg/* 所有 API
  */
 class MsgService {
   /**
-   * 取msg（命名为fetch而非get主要是因为是远程操作）
+   * 取 msg（命名为 fetch 而非 get 主要是因为是远程操作）
    * @param  {String} options.author   作者名
-   * @param  {Number} options.pageIdx  目标页码（默认是第1页）
-   * @param  {Number} options.quantity 单页请求msg的数量（默认10）
+   * @param  {Number} options.pageIdx  目标页码（默认是第 1 页）
+   * @param  {Number} options.quantity 单页请求 msg 的数量（默认每页显示 10 条）
    * @param  {Number} options.msgId
    * @return {Promise}
    */
@@ -24,7 +24,7 @@ class MsgService {
   }
 
   /**
-   * 新增msg
+   * 新增 msg
    * @param  {Object} msgBody { title:{String}, content:{String} }
    * @return {Promise}
    */
@@ -37,7 +37,7 @@ class MsgService {
   }
 
   /**
-   * 修改msg
+   * 修改 msg
    * @param  {Object} msgBody { title:{String}, content:{String} }
    * @return {Promise}
    */
@@ -53,7 +53,7 @@ class MsgService {
   }
 
   /**
-   * 删除msg
+   * 删除 msg
    * @param  {Number} msgId
    * @return {Promise}
    */
@@ -66,5 +66,5 @@ class MsgService {
 
 }
 
-// 单例模式
+// 实例化后再导出
 export default new MsgService()

@@ -9,13 +9,15 @@ export default class Todo extends Component {
   }
 
   render () {
-    let { todos, addTodo } = this.props
+    let { todos, addTodo, toggleTodo } = this.props
     return (
       <div>
         <ul>
           { todos.map(todo =>
-            <li key={todo.id}>
-              { todo.content }
+            <li key={todo.id} onClick={() => toggleTodo(todo.id)}>
+              <span style={{textDecoration: todo.completed ? 'line-through' : 'none'}}>
+                { todo.content }
+              </span>
               <a href="javascript:;"
                 style={{textDecoration: 'none'}}
                 className="pull-right"

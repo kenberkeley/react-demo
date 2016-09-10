@@ -9,7 +9,7 @@ import dateTimeFormatter from 'UTIL/dateTimeFormatter'
 export default class MsgList extends Component {
   componentWillMount () {
     let { author } = this.props.location.query
-    if (author) this.props.specifyAuthor(author)
+    this.props.specifyAuthor(author)
     this.updateMsgList()
   }
   /**

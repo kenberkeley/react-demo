@@ -1,4 +1,4 @@
-import { store, history } from 'STORE'
+import store, { history } from 'STORE'
 
 /**
  * 用户访问权限拦截器

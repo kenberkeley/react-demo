@@ -11,7 +11,7 @@ export default class NotFound extends Component {
   }
 
   render () {
-    // 非实体组件需显式返回null
+    // 非实体组件需显式返回 null
     return null
   }
 }

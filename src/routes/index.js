@@ -1,8 +1,7 @@
 export default {
   path: '/',
 
-  // 全局布局基页
-  component: require('VIEW/layout').default,
+  component: require('COMPONENT/App').default,
   
   indexRoute: {
     component: require('COMPONENT/Welcome').default
