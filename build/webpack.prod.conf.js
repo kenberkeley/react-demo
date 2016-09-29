@@ -15,13 +15,6 @@ config.output.chunkFilename = '[id].[chunkhash].js';
 
 config.devtool = SOURCE_MAP ? 'source-map' : false;
 
-// generate loader string to be used with extract text plugin
-function generateExtractLoaders(loaders) {
-  return loaders.map(function(loader) {
-    return loader + '-loader' + (SOURCE_MAP ? '?sourceMap' : '');
-  }).join('!');
-}
-
 config.plugins = (config.plugins || []).concat([
   // 复制高度静态资源
   new CopyWebpackPlugin([
