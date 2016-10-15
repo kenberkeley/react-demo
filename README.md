@@ -9,7 +9,8 @@
 > ### 更新
 > 2016/8/28 &nbsp; 引入 `cross-env` 解决跨平台问题，新增优化项 `DedupePlugin`  
 > 2016/8/29 &nbsp; 重命名 `makeContainer / makeReducer.js => createContainer / createReducer.js`  
-> 2016/9/10 &nbsp; 重构 `src/redux/`
+> 2016/9/10 &nbsp; 重构 `src/redux/`  
+> 2016/10/15 &nbsp; 同步 Vue Demo 的改动
 
 ## 目录
 #### &sect; [技术栈](#features)
@@ -57,14 +58,14 @@
 转译成 ES5（答案请自行到 [Babel REPL][babel-repl] 在线编译验证）
 
 ### <a name="installation">⊙ 安装</a>
-> 建议升级到 node 5.x/6.x + npm 3.x 环境  
-> 推荐使用 `cnpm` 或手动切换到淘宝 npm 源  
-> `npm set registry https://registry.npm.taobao.org/`
+> 推荐升级到 node 5.x/6.x + npm 3.x 环境，**强烈推荐**使用 [`cnpm`](https://github.com/cnpm/cnpm) 安装依赖或手动   
+> 切换到淘宝 npm 源：`npm set registry https://registry.npm.taobao.org/`  
+> （经测试，`cnpm` 对于 `node-sass` 等问题多多的 Package 拥有秒杀能力）
 
 本示例项目需要结合 [简易留言板 RESTful API](https://github.com/kenberkeley/msg-board-api)  
 模拟前后端分离开发（还为了与 [Vue Demo][vue-demo] 共用）  
-请分别 `git clone`，打开**两个**命令窗口（ Windows 下推荐使用 `Cygwin`）**分别**切换到两者的目录下  
-分别敲下 `npm install` 安装依赖（为避免 Windows 下的 npm 软链接问题，可加上 `--no-bin-link` 完全解构所有依赖）
+请分别 `git clone`，打开**两个**命令窗口（ Windows 下推荐使用 `Cygwin / Git Bash`）**分别**切换到两者的目录下  
+分别敲下 `npm install` 安装依赖（为避免 Windows 下 npm 2.x 的软链接问题，可加上 `--no-bin-link` 完全解构所有依赖）
 
 > 虽然我们已经切换到了淘宝 npm 源，但安装 `node-sass@3.8.0` 的时候还是很有可能卡住  
 > 因为它的安装需要从 Github 的 AWS 服务器拉取二进制文件，因此您可以为它指定源：  
@@ -72,13 +73,13 @@
 > 
 > 如果您想简单粗暴一点，[这里](http://pan.baidu.com/s/1o8eu4t0)还提供了 `node_modules.zip`，直接解压即可
 
-最后需要全局安装跨平台环境配置器：`npm i cross-env -g`
+最后需要全局安装跨平台环境变量配置器：`npm i cross-env -g`
 
 ### <a name="start">⊙ 启动</a>
 先后在 `msg-board-api`、`react-demo` 的命令窗口下，敲下 `npm start`  
 如无意外，默认浏览器就会自动打开 `localhost:9090`，您立即可以看到效果  
 若浏览器没有自动弹出，则请自行手动访问  
-> 开发过程中，通过 Webpack 处理的静态资源都由基于内存的 `webpack-dev-server` 提供  
+
 > P.S. 如果您还不清楚如何安装与启动，请看这个 [issue][how-to-start]
 
 ***
@@ -90,6 +91,7 @@
 ├─ build/            # Webpack 配置目录
 ├─ dist/             # build 生成的生产环境下的项目
 ├─ src/              # 源码目录（开发都在这里进行）
+│   ├─ assets/         # 放置需要经由 Webpack 处理的静态文件
 │   ├─ components/     # 组件（COMPONENT）
 │   ├─ redux/          # Redux 一箩筐
 │   │   ├─ actions/      # （ACTION）
@@ -149,7 +151,7 @@
 
 * 框架 / 类库 须分离打包以加快开发时的编译速度并有利于缓存，详见 `build/webpack.base.conf.js` 中的 `vendor`
 > 实际上该步骤可通过读取 `package.json` 的 `dependencies` 字段实现自动化，但其灵活度不够高，必要性也不大  
-> P.S. 安装包时勿忘添加 `--save`
+> P.S. 安装包时勿忘 `--save / --save-dev` 以添加依赖记录
 
 * <a name="alias">**路径别名**</a> 的定义位于 `build/webpack.base.conf.js`，好处就是**引入与重构都很方便**
 > 例如，在某组件中，引入 `userService` 需要 `import userService from '../../../services/userService'`  
@@ -199,7 +201,7 @@
 
 ## <a name="deployment">&sect; 部署</a>
 在 `react-demo` 的命令窗口下，敲下 `npm run build`，将会在项目根目录下生成 `dist/`  
-> 您可以使用命令行静态资源服务器 [serve](https://github.com/tj/serve) ( `npm i serve -g` )，敲下 `serve -p [端口] dist` 来快速查看 build 后的项目  
+> 您可以使用命令行静态资源服务器 [serve](https://github.com/tj/serve) ( `npm i serve -g` )，敲下 `serve dist/ -p [端口]` 来快速查看 build 后的项目  
 > 还可以 `cd dist` 后，`python -m SimpleHTTPServer [端口]` 或 `php -S localhost:[端口]` 快速便捷地实现静态资源服务器
 >
 > 关于生产环境下的部署与优化，已超出本文档的论述范围，请自行查阅相关资料  

@@ -37,6 +37,25 @@ ReactDOM.render(
   MOUNT_NODE
 )
 
+// === Webpack 处理 assets，取消注释即可进行测试 === //
+/* 处理 less / sass */
+// import 'ASSET/less/normalize.less'
+// import 'ASSET/scss/normalize.scss'
+
+/* 处理 img，小于 10KB 的转为 base64，否则使用 URL */
+// import base64 from 'ASSET/img/smaller.png'
+// import url from 'ASSET/img/larger.png'
+
+// function appendImgToBody(content) {
+//   const img = document.createElement('img')
+//   img.src = content
+//   document.body.appendChild(img)
+// }
+
+// appendImgToBody(base64)
+// appendImgToBody(url)
+
+
 /**
  * 【拓展】
  *  react-redux 的 Provider 中传入的属性

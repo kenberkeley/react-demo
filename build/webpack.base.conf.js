@@ -1,11 +1,14 @@
 var path = require('path'),
-  webpack = require('webpack');
+  webpack = require('webpack'),
+  NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 
-var src = path.resolve(__dirname, '../src'); // 源码目录
+var rootPath = path.resolve(__dirname, '..'), // 项目根目录
+  src = path.join(rootPath, 'src'); // 开发源码目录
 var commonPath = {
-  dist: path.resolve(__dirname, '../dist'), // build 后输出目录
+  rootPath: rootPath,
+  dist: path.join(rootPath, 'dist'), // build 后输出目录
   indexHTML: path.join(src, 'index.html'), // 入口基页
-  staticDir: path.resolve(__dirname, '../static') // 无需处理的静态资源目录
+  staticDir: path.join(rootPath, 'static') // 无需处理的静态资源目录
 };
 
 module.exports = {
@@ -34,11 +37,12 @@ module.exports = {
     publicPath: '/static/'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json'],
+    extensions: ['', '.js', '.jsx'],
     alias: {
       // ================================
       // 自定义路径别名
       // ================================
+      ASSET: path.join(src, 'assets'),
       COMPONENT: path.join(src, 'components'),
       ACTION: path.join(src, 'redux/actions'),
       REDUCER: path.join(src, 'redux/reducers'),
@@ -52,12 +56,11 @@ module.exports = {
     }
   },
   resolveLoader: {
-    root: path.join(__dirname, 'node_modules')
+    root: path.join(rootPath, 'node_modules')
   },
   module: {
     loaders: [{
       test: /\.(js|jsx)$/,
-      include: src,
       loaders: ['react-hot', 'babel?' + JSON.stringify({
         cacheDirectory: true,
         plugins: [
@@ -70,30 +73,34 @@ module.exports = {
             presets: ['react-optimize']
           }
         }
-      }), 'eslint']
+      }), 'eslint'],
+      include: src,
+      exclude: /node_modules/
     }, {
       test: /\.json$/,
       loader: 'json'
     }, {
-      test: /\.less$/,
-      loader: 'css!less'
+      test: /\.html$/,
+      loader: 'html'
     }, {
-      test: /\.(png|jpg|gif|svg)$/,
+      test: /\.(png|jpe?g|gif|svg)$/,
       loader: 'url',
       query: {
-        limit: 10000,
-        name: '[name].[ext]?[hash]'
+        limit: 10240, // 10KB 以下使用 base64
+        name: 'img/[name]-[hash:6].[ext]'
       }
     }, {
-      test: /\.(eot|woff|ttf|svg)$/,
-      loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
+      test: /\.(woff2?|eot|ttf|otf)$/,
+      loader: 'fonts/url-loader?limit=10240&name=[name]-[hash:6].[ext]'
     }]
   },
   eslint: {
     formatter: require('eslint-friendly-formatter')
   },
   plugins: [
+    new NyanProgressPlugin(), // 进度条
     new webpack.optimize.CommonsChunkPlugin({
+      // 公共代码分离打包
       names: ['vendor', 'mainifest']
     }),
     new webpack.DefinePlugin({
