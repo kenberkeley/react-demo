@@ -3,7 +3,8 @@ var path = require('path'),
   NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 
 var rootPath = path.resolve(__dirname, '..'), // 项目根目录
-  src = path.join(rootPath, 'src'); // 开发源码目录
+  src = path.join(rootPath, 'src'), // 开发源码目录
+  env = process.env.NODE_ENV.trim(); // 当前环境
 var commonPath = {
   rootPath: rootPath,
   dist: path.join(rootPath, 'dist'), // build 后输出目录
@@ -29,7 +30,6 @@ module.exports = {
       'react-router-redux',
       'redux',
       'redux-thunk'
-      // 'superagent'
     ]
   },
   output: {
@@ -61,19 +61,27 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.(js|jsx)$/,
-      loaders: ['react-hot', 'babel?' + JSON.stringify({
-        cacheDirectory: true,
-        plugins: [
-          'transform-runtime',
-          'transform-decorators-legacy'
-        ],
-        presets: ['es2015', 'react', 'stage-0'],
-        env: {
-          production: {
-            presets: ['react-optimize']
+      loaders: (function() {
+        var _loaders = ['babel?' + JSON.stringify({
+          cacheDirectory: true,
+          plugins: [
+            'transform-runtime',
+            'transform-decorators-legacy'
+          ],
+          presets: ['es2015', 'react', 'stage-0'],
+          env: {
+            production: {
+              presets: ['react-optimize']
+            }
           }
+        }), 'eslint'];
+
+        // 开发环境下引入 React Hot Loader
+        if (env === 'development') {
+          _loaders.unshift('react-hot');
         }
-      }), 'eslint'],
+        return _loaders;
+      })(),
       include: src,
       exclude: /node_modules/
     }, {
@@ -110,8 +118,8 @@ module.exports = {
       // ================================
       // 配置开发全局常量
       // ================================
-      __DEV__: process.env.NODE_ENV.trim() === 'development',
-      __PROD__: process.env.NODE_ENV.trim() === 'production',
+      __DEV__: env === 'development',
+      __PROD__: env === 'production',
       __COMPONENT_DEVTOOLS__: false, // 是否使用组件形式的 Redux DevTools
       __WHY_DID_YOU_UPDATE__: false // 是否检测不必要的组件重渲染
     })

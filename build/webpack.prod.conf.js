@@ -41,7 +41,9 @@ config.plugins.push(
     }
   }),
   new webpack.optimize.OccurenceOrderPlugin(),
-  new ExtractTextPlugin('[name].[contenthash:6].css'),
+  new ExtractTextPlugin('[name].[contenthash:6].css', {
+    allChunks : true // 若要按需加载 CSS 则请注释掉该行
+  }),
   new HtmlWebpackPlugin({
     filename: '../index.html',
     template: config.commonPath.indexHTML,

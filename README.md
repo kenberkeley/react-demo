@@ -10,7 +10,8 @@
 > 2016/8/28 &nbsp; 引入 `cross-env` 解决跨平台问题，新增优化项 `DedupePlugin`  
 > 2016/8/29 &nbsp; 重命名 `makeContainer / makeReducer.js => createContainer / createReducer.js`  
 > 2016/9/10 &nbsp; 重构 `src/redux/`  
-> 2016/10/15 &nbsp; 同步 Vue Demo 的改动
+> 2016/10/15 &nbsp; 同步 Vue Demo 的改动  
+> 2016/10/16 &nbsp; 改进：仅在开发模式下引入 React Hot Loader
 
 ## 目录
 #### &sect; [技术栈](#features)
