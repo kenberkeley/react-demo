@@ -107,10 +107,6 @@ module.exports = {
   },
   plugins: [
     new NyanProgressPlugin(), // 进度条
-    new webpack.optimize.CommonsChunkPlugin({
-      // 公共代码分离打包
-      names: ['vendor', 'mainifest']
-    }),
     new webpack.DefinePlugin({
       'process.env': { // 这是给 React / Redux 打包用的
         NODE_ENV: JSON.stringify('production')

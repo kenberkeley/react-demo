@@ -41,6 +41,10 @@ config.plugins.push(
     }
   }),
   new webpack.optimize.OccurenceOrderPlugin(),
+  new webpack.optimize.CommonsChunkPlugin({
+    // 公共代码分离打包
+    names: ['vendor', 'mainifest']
+  }),
   new ExtractTextPlugin('[name].[contenthash:6].css', {
     allChunks : true // 若要按需加载 CSS 则请注释掉该行
   }),
