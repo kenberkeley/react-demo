@@ -14,8 +14,8 @@
   "dependencies": {
     "history": "^2.0.0",
     "lodash": "^4.15.0",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
+    "react": "~15.3.1",
+    "react-dom": "~15.3.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
     "react-router-redux": "^4.0.5",
