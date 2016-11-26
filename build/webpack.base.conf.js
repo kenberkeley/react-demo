@@ -99,7 +99,7 @@ module.exports = {
       }
     }, {
       test: /\.(woff2?|eot|ttf|otf)$/,
-      loader: 'fonts/url-loader?limit=10240&name=[name]-[hash:6].[ext]'
+      loader: 'url-loader?limit=10240&name=fonts/[name]-[hash:6].[ext]'
     }]
   },
   eslint: {
