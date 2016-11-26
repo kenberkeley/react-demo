@@ -9,7 +9,7 @@ export default {
   msg: {
     msgs: [],           // 当前显示的留言列表
     displayControl: {   // 查询条件
-      pageIdx: 1,         // 默认是第 10 页
+      pageIdx: 1,         // 默认是第 1 页
       quantity: 10,       // 默认每页显示 10 条记录
       authorSpecified: '' // 是否有指定发布者
     }

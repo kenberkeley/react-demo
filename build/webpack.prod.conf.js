@@ -30,7 +30,8 @@ config.plugins.push(
   }),
   new CopyWebpackPlugin([ // 复制高度静态资源
     {
-      from: config.commonPath.staticDir,
+      context: config.commonPath.staticDir,
+      from: '**/*',
       ignore: ['*.md']
     }
   ]),

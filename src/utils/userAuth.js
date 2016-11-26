@@ -13,10 +13,3 @@ export default function userAuth(nextState, replace, next) {
   history.goBack()
   // next(replace('/loginPage')) # 举例：跳转到登录页的写法
 }
-
-/* 
-  还记得吗？在 Vue Demo 中
-  我们依靠 userService 实现 userData 的全局访问
-  每次修改顶级变量 $root.userData 都要同步 userService.data
-  如今用上 Redux，就再也不需要这样操作了
- */
