@@ -2,6 +2,7 @@ var path = require('path'),
   webpack = require('webpack');
 
 var src = path.resolve(__dirname, '../src'); // 源码目录
+var REACT_MOUNT_PATH = 'react/lib/ReactMount';
 var commonPath = {
   dist: path.resolve(__dirname, '../dist'), // build 后输出目录
   indexHTML: path.join(src, 'index.html'), // 入口基页
@@ -48,7 +49,8 @@ module.exports = {
       UTIL: path.join(src, 'utils'),
       HOC: path.join(src, 'utils/HoC'),
       MIXIN: path.join(src, 'utils/mixins'),
-      VIEW: path.join(src, 'views')
+      VIEW: path.join(src, 'views'),
+      [REACT_MOUNT_PATH]: 'react-dom/lib/ReactMount'
     }
   },
   resolveLoader: {
