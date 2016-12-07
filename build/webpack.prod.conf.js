@@ -47,6 +47,9 @@ config.plugins.push(
     names: ['vendor', 'mainifest']
   }),
   new webpack.optimize.AggressiveMergingPlugin(),
+  new webpack.optimize.MinChunkSizePlugin({
+    minChunkSize: 30000
+  }),
   new ExtractTextPlugin('[name].[contenthash:6].css', {
     allChunks : true // 若要按需加载 CSS 则请注释掉该行
   }),
