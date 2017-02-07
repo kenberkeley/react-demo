@@ -231,3 +231,7 @@
 [react-optimize]: https://github.com/thejameskyle/babel-react-optimize
 [history]: https://github.com/ReactTraining/history
 [proptypes]: https://facebook.github.io/react/docs/reusable-components-zh-CN.html#prop-验证
+
+### 疑问
+
+#### super与context的使用
