@@ -22,6 +22,8 @@
  * }
  * 之后就可以这样写了
  * onClick={this.handleChange}
+ * 
+ * Small Fish Wang: 很巧妙的办法，别具一格，一般人会用refs
  */
 export default function handleChange(evt) {
   this.setState({

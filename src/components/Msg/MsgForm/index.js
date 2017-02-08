@@ -5,6 +5,7 @@ import tpl from './msg-form.jsx' // 分拆写 JSX 模板以减少单文件代码
 
 /* 为什么不直接 const initState = { ... } 而是用函数返回呢？
    皆因直接传 initState 仅是传引用，initState 本身可被修改 */
+  // Small Fish Wang:  初始化代码放在外面，别具一格。在redux/store 也有初始化代码。
 const getInitState = () => ({ id: '', title: '', content: '' })
 
 /* 由于本组件由 /msg/add 与 /msg/:msgId 所公用
@@ -59,6 +60,8 @@ export default class MsgForm extends Component {
 
     // 情况3：强制刷新 /msg/detail/:msgId 后，跳转到 /msg/modify/:msgId
     // 此时 state 中 msgs 为空，需要立即从后端 API 获取
+    // Small Fish Wang: 直接使用ajax拿数据，没有使用redux，失去统一管理的好处。但这里使用redux，不方便实现add与modify公用。我试试看。
+    
     msgService.fetch({ msgId }).then(msg => {
       let { id, title, content, author } = msg
       if (!msg || author !== username) {
