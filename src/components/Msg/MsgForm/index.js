@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import msgService from 'SERVICE/msgService'
+// import msgService from 'SERVICE/msgService'
 import handleChange from 'MIXIN/handleChange'
 import tpl from './msg-form.jsx' // 分拆写 JSX 模板以减少单文件代码量
 import { connect } from 'react-redux'
@@ -16,7 +16,7 @@ const getInitState = () => ({ id: '', title: '', content: '' })
    因此需要判断当前是“新增模式”还是“修改模式” */
 const isAddMode = pathname => pathname.startsWith('/msg/add')
 
-@connect((userData) => (userData), Msg)
+@connect((msgs) => (msgs), Msg)
 
 export default class MsgForm extends Component {
   static contextTypes = {
@@ -56,20 +56,29 @@ export default class MsgForm extends Component {
     }
 
     // 情况2：处于 /msg/modify/:msgId，且 state 中 msgs 不为空
+    
     if (msgs.length) {
+      // Small Fish Wang: 所有的数据都传递过来了，然后从中自己挑选，这里使用了filter方法
+      // 我觉得这个应该是Redux中的Reducer来实现的，要不然每个地方都传递所有的数据，数据量大的情况下，会有性能问题。
+      // 这个地方也用解构，用得真灵活而方便。
+
       let nextState = msgs.filter(({ id }) => id === msgId)[0]
       if (!nextState || nextState.author !== username) {
         return this.handleIllegal()
       }
+
       return this.setState(nextState)
     }
+    
 
     // 情况3：强制刷新 /msg/detail/:msgId 后，跳转到 /msg/modify/:msgId
     // 此时 state 中 msgs 为空，需要立即从后端 API 获取
     // Small Fish Wang: 直接使用ajax拿数据，没有使用redux，失去统一管理的好处。但这里使用redux，不方便实现add与modify公用。我试试看。
     
-    msgService.fetch({ msgId }).then(msg => {
+    let { fetchMsg } = this.props
+    fetchMsg.fetch({ msgId }).then(msg => {
       let { id, title, content, author } = msg
+      console.info('content: ', content)
       if (!msg || author !== username) {
         return this.handleIllegal()
       }
@@ -103,8 +112,8 @@ export default class MsgForm extends Component {
   }
 
   render () {
-    let { userData, msgs} = this.props
-    console.error(userData, msgs)
+    let { userData, msg} = this.props
+    console.info(userData, msg, this.props)
     // 使用 call/apply，让 tpl 中的上下文与当前一致
     // （最佳实践应该跟 mixin 一样，在构造函数中使用 bind 绑定）
     return tpl.call(this)

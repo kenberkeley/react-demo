@@ -236,3 +236,4 @@
 
 #### super与context的使用时，this的指向。
 #### `import userService from 'SERVICE/userService'`路径大写的出于什么考虑？(路径别名，引入与重构很方便)
+#### Redux是把所有的数据都传递过来么，不是页面需要什么数据就传递什么数据么？如果是前者，会有性能问题；如果是后者，怎么做到的，通过Reducer？

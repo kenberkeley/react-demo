@@ -58,6 +58,6 @@ export default {
 // 故在此直接给出处理逻辑
 // ================================
 export const ACTION_HANDLERS = {
-  [LOG_IN]: (userData, { payload }) => payload, // payload is userData
+  [LOG_IN]: (userData, { payload }) => {console.info('payload: ', payload); return payload}, // payload is userData
   [LOG_OUT]: () => null
 }
