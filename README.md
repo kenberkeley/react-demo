@@ -119,7 +119,8 @@
 有关木偶组件与智能组件更为精确的论述，推荐 Redux 作者 Dan 的[这篇文章][dan-post]，避免教条主义
 
 > 您可以根据业务需求改动目录结构。若目录使用频繁，建议配置 [路径别名](#alias)  
-> 默认的路径别名见上面目录结构注释中大写形式的常量
+> 默认的路径别名见上面目录结构注释中大写形式的常量  
+> **特别推荐：** 更新版本的 [Vue Demo 文档 · 目录结构](https://github.com/kenberkeley/vue-demo/blob/master/docs/zh-cn/Structure.md)
 
 ### <a name="character">⊙ 特色</a>
 * 本示例项目秉承最佳实践，**高度洁癖**地实现代码分离/复用
