@@ -1,7 +1,10 @@
 var fs = require('fs'),
   path = require('path'),
   webpack = require('webpack'),
-  config = require('./webpack.prod.conf');
+  config = require('./webpack.prod.conf'),
+  express = require('express'),
+  port = process.env.PORT || 9091,
+  app = express();
 
 webpack(config, function(err, stats) {
   // show build info to console
@@ -12,4 +15,14 @@ webpack(config, function(err, stats) {
     path.join(config.commonPath.dist, '__build_info__'),
     stats.toString({ color: false })
   );
+
+  var rootPath = path.resolve(__dirname, '..')
+  // 通常用于加载静态资源
+  app.use(express.static(rootPath + '/dist'))
+  // 将所有路径指向index
+  app.get('*', function (request, response){
+    response.sendFile(rootPath + '/dist/index.html')
+  })
+  app.listen(port)
+  console.log("server started on port " + port)
 });

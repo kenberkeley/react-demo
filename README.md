@@ -196,8 +196,8 @@
 ***
 
 ## <a name="deployment">&sect; 部署</a>
-在 `react-demo` 的命令窗口下，敲下 `npm run build`，将会在项目根目录下生成 `dist/`  
-> 您可以使用命令行静态资源服务器 [serve](https://github.com/tj/serve) ( `npm i serve -g` )，敲下 `serve dist/ -p [端口]` 来快速查看 build 后的项目  
+在 `react-demo` 的命令窗口下，敲下 `npm run build`，将会在项目根目录下生成 `dist/` 同时开启一个express server，此时打开 `localhost:9091` 即可查看 build后的项目
+> 您也可以使用命令行静态资源服务器 [serve](https://github.com/tj/serve) ( `npm i serve -g` )，敲下 `serve dist/ -p [端口]` 来快速查看 build 后的项目  
 > 还可以 `cd dist` 后，`python -m SimpleHTTPServer [端口]` 或 `php -S localhost:[端口]` 快速便捷地实现静态资源服务器
 >
 > 关于生产环境下的部署与优化，已超出本文档的论述范围，请自行查阅相关资料  
