@@ -68,8 +68,6 @@
 请分别 `git clone`，打开**两个**命令窗口（ Windows 下推荐使用 `Cygwin / Git Bash`）**分别**切换到两者的目录下  
 分别敲下 `npm install` 安装依赖（为避免 Windows 下 npm 2.x 的软链接问题，可加上 `--no-bin-link` 完全解构所有依赖）
 
-最后需要全局安装跨平台环境变量配置器：`npm i cross-env -g`
-
 ### <a name="start">⊙ 启动</a>
 先后在 `msg-board-api`、`react-demo` 的命令窗口下，敲下 `npm start`  
 如无意外，默认浏览器就会自动打开 `localhost:9090`，您立即可以看到效果  
