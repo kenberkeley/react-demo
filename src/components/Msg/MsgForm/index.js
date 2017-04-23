@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import msgService from 'SERVICE/msgService'
+import msgService from '@/services//msgService'
 import handleChange from 'MIXIN/handleChange'
 import tpl from './msg-form.jsx' // 分拆写 JSX 模板以减少单文件代码量
 

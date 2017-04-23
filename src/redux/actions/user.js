@@ -1,4 +1,4 @@
-import userService from 'SERVICE/userService'
+import userService from '@/services//userService'
 // ================================
 // Action Type
 // ================================

@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
-import OptBtnGroup from 'COMPONENT/Msg/OptBtnGroup'
-import dateTimeFormatter from 'UTIL/dateTimeFormatter'
-import msgService from 'SERVICE/msgService'
+import OptBtnGroup from '@/components/Msg/OptBtnGroup'
+import dateTimeFormatter from '@/utils//dateTimeFormatter'
+import msgService from '@/services//msgService'
 
 export default class MsgDetail extends Component {
 /**

@@ -3,8 +3,8 @@ import { Link } from 'react-router'
 import Pagination from './Pagination'
 import NoticeBar from './NoticeBar'
 import DisplayControl from './DisplayControl'
-import OptBtnGroup from 'COMPONENT/Msg/OptBtnGroup'
-import dateTimeFormatter from 'UTIL/dateTimeFormatter'
+import OptBtnGroup from '@/components/Msg/OptBtnGroup'
+import dateTimeFormatter from '@/utils//dateTimeFormatter'
 
 export default class MsgList extends Component {
   componentWillMount () {

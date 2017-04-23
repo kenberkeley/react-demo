@@ -17,7 +17,7 @@ if (__DEV__) {
   
   /* 2. 内嵌在页面中的 Redux DevTools 组件 */
   if (__COMPONENT_DEVTOOLS__) {
-    const DevTools = require('COMPONENT/DevTools').default
+    const DevTools = require('@/components/DevTools').default
     enhancers.push(DevTools.instrument())
   }
 }

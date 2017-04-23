@@ -2,7 +2,7 @@
   "name": "react-demo",
   "description": "A Simple Message Board Demo developed by React",
   "author": "Ken Berkeley <kenberkeley@foxmail.com>",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "start": "cross-env NODE_ENV=development node build/dev.js",
     "build": "cross-env NODE_ENV=production node build/prod.js"
@@ -44,7 +44,7 @@
     "eslint-friendly-formatter": "^1.2.2",
     "eslint-loader": "^1.2.0",
     "eslint-plugin-babel": "^3.2.0",
-    "eslint-plugin-react": "^5.0.0",
+    "eslint-plugin-react": "^5.2.2",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.13.3",
     "express-favicon": "^1.0.1",

@@ -1,5 +1,5 @@
 import { injectReducer } from 'REDUCER'
-import createContainer from 'UTIL/createContainer'
+import createContainer from '@/utils//createContainer'
 
 export default {
   path: 'todo',
@@ -7,7 +7,7 @@ export default {
   /* 布局基页 */
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
-      cb(null, require('VIEW/todo').default)
+      cb(null, require('@/views//todo').default)
     }, 'todoView')
   },
 
@@ -21,7 +21,7 @@ export default {
         const TodoContainer = createContainer(
           ({ todos }) => ({ todos }),        // mapStateToProps,
           require('ACTION/todo').default,    // mapActionCreators,
-          require('COMPONENT/Todo/').default // 木偶组件
+          require('@/components/Todo/').default // 木偶组件
         )
 
         cb(null, TodoContainer)

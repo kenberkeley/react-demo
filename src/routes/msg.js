@@ -1,6 +1,6 @@
 import { injectReducer } from 'REDUCER'
-import userAuth from 'UTIL/userAuth'           // 用户访问拦截器
-import createContainer from 'UTIL/createContainer'
+import userAuth from '@/utils//userAuth'           // 用户访问拦截器
+import createContainer from '@/utils//createContainer'
 
 const connectComponent = createContainer(
   ({ userData, msg }) => ({ userData, msg }), // mapStateToProps
@@ -16,14 +16,14 @@ export default {
       // 立即注入 Reducer
       injectReducer('msg', require('REDUCER/msg/').default)
 
-      cb(null, require('VIEW/msg').default)
+      cb(null, require('@/views//msg').default)
     }, 'msgView')
   },
 
   indexRoute: { // 对应 /msg
     getComponent (nextState, cb) {
       require.ensure([], (require) => {
-        cb(null, connectComponent(require('COMPONENT/Msg/MsgList').default))
+        cb(null, connectComponent(require('@/components/Msg/MsgList').default))
       }, 'msgList')
     }
   },
@@ -33,7 +33,7 @@ export default {
     path: 'detail/:msgId',
     getComponent (nextState, cb) {
       require.ensure([], (require) => {
-        cb(null, connectComponent(require('COMPONENT/Msg/MsgDetail').default))
+        cb(null, connectComponent(require('@/components/Msg/MsgDetail').default))
       }, 'msgDetail')
     }
   },
@@ -41,7 +41,7 @@ export default {
     path: 'add',
     getComponent (nextState, cb) {
       require.ensure([], (require) => {
-        cb(null, connectComponent(require('COMPONENT/Msg/MsgForm').default))
+        cb(null, connectComponent(require('@/components/Msg/MsgForm').default))
       }, 'msgForm')
     },
     onEnter: userAuth
@@ -50,7 +50,7 @@ export default {
     path: 'modify/:msgId',
     getComponent (nextState, cb) {
       require.ensure([], (require) => {
-        cb(null, connectComponent(require('COMPONENT/Msg/MsgForm').default))
+        cb(null, connectComponent(require('@/components/Msg/MsgForm').default))
       }, 'msgForm')
     },
     onEnter: userAuth

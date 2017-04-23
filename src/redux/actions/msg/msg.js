@@ -1,4 +1,4 @@
-import msgService from 'SERVICE/msgService'
+import msgService from '@/services//msgService'
 // ================================
 // Action Type
 // ================================

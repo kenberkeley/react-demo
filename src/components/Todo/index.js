@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TodoInput from './TodoInput'
-import dateTimeFormatter from 'UTIL/dateTimeFormatter'
+import dateTimeFormatter from '@/utils//dateTimeFormatter'
 
 export default class Todo extends Component {
   delTodo (todoId) {

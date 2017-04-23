@@ -1,4 +1,4 @@
-import createReducer from 'UTIL/createReducer'
+import createReducer from '@/utils//createReducer'
 import { ACTION_HANDLERS } from 'ACTION/todo'
 import initState from 'STORE/initState'
 

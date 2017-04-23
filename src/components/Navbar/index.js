@@ -6,7 +6,7 @@ import LogoutDropdown from './LogoutDropdown'
 
 /* 导航栏全局显示，控制着用户的登录注销 */
 
-@connect( // 功能同 UTIL/createContainer
+@connect( // 功能同 @/utils//createContainer
   ({ userData }) => ({ userData }),
   require('ACTION/user').default
 )
