@@ -2,6 +2,7 @@ var fs = require('fs'),
   path = require('path'),
   webpack = require('webpack'),
   config = require('./webpack.prod.conf'),
+  commonPath = require('./webpack.base.conf').commonPath,
   express = require('express'),
   port = process.env.PORT || 9091,
   app = express();
@@ -12,7 +13,7 @@ webpack(config, function(err, stats) {
 
   // save build info to file
   fs.writeFile(
-    path.join(config.commonPath.dist, '__build_info__'),
+    path.join(commonPath.dist, '__build_info__'),
     stats.toString({ color: false })
   );
 
