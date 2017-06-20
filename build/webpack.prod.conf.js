@@ -13,15 +13,15 @@ config.output.chunkFilename = '[id].[chunkhash:6].js';
 config.devtool = SOURCE_MAP ? 'source-map' : false;
 
 // 生产环境下分离出 CSS 文件
-config.module.loaders.push({
+config.module.rules.push({
   test: /\.css$/,
-  loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+  loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'})
 }, {
   test: /\.less$/,
-  loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'less-loader')
+  loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: ['css-loader', 'less-loader']})
 }, {
   test: /\.scss$/,
-  loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'sass-loader')
+  loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: ['css-loader', 'sass-loader']})
 });
 
 config.plugins.push(
@@ -50,13 +50,14 @@ config.plugins.push(
   new webpack.optimize.MinChunkSizePlugin({
     minChunkSize: 30000
   }),
-  new ExtractTextPlugin('[name].[contenthash:6].css', {
+  new ExtractTextPlugin({
+    filename: '[name].[contenthash:6].css',
     allChunks : true // 若要按需加载 CSS 则请注释掉该行
   }),
   new HtmlWebpackPlugin({
     filename: '../index.html',
     template: commonPath.indexHTML,
-    chunksSortMode: 'none'
+    chunksSortMode: 'dependency'
   })
 );
 

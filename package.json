@@ -50,7 +50,7 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.8.4",
     "html-loader": "^0.4.3",
-    "html-webpack-plugin": "^1.7.0",
+    "html-webpack-plugin": "^2.28.0",
     "inject-loader": "^2.0.1",
     "json-loader": "^0.5.4",
     "less": "^2.6.0",

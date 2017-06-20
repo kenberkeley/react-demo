@@ -51,7 +51,7 @@ config.plugins.push(
     new HtmlWebpackPlugin({
         filename: 'index.html',
         template: commonPath.indexHTML,
-        chunksSortMode: 'none'
+        chunksSortMode: 'dependency'
     }),
     new BrowserSyncPlugin({
         host: '127.0.0.1',
