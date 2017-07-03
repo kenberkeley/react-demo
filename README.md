@@ -1,5 +1,7 @@
 # React 示例项目 · 简易留言板 + 待办事项
 
+> ## *2017.7 升级版预览：[`react-scaffold`](https://github.com/kenberkeley/react-scaffold)，敬请期待！*
+
 ![应用截图](./screenshot.png)
 
 > ###写在前面  
