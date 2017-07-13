@@ -9,7 +9,7 @@ export default class LoginForm extends Component {
     // 只能使用 this.setState({ XXX: XXX })
     this.state = { username: '' }
 
-    this.handleChange = handleChange.bind(this) // mixin
+    
   }
 
   handleSubmit () {
@@ -40,7 +40,7 @@ export default class LoginForm extends Component {
             placeholder="请输入您的用户名"
             required
             value={this.state.username}
-            onChange={this.handleChange} />
+            onChange={this::handleChange} />
         </div>
         
         <button

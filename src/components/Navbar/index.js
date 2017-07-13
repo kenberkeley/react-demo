@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import { IndexLink, Link } from 'react-router'
 import LoginForm from './LoginForm'
 import LogoutDropdown from './LogoutDropdown'
+import User from 'ACTION/user'
+
 
 /* 导航栏全局显示，控制着用户的登录注销 */
 
 @connect( // 功能同 UTIL/createContainer
   ({ userData }) => ({ userData }),
-  require('ACTION/user').default
+  User
 )
 export default class Navbar extends Component {
   componentWillMount () {

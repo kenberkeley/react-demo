@@ -22,9 +22,11 @@
  * }
  * 之后就可以这样写了
  * onClick={this.handleChange}
+ * 
+ * Small Fish Wang: 很巧妙的办法，别具一格，一般人会用refs。使用trim方法有一个缺点，在textarea中结尾不能输入空格。
  */
 export default function handleChange(evt) {
   this.setState({
-    [evt.target.name]: evt.target.value.trim()
+    [evt.target.name]: evt.target.value
   })
 }
