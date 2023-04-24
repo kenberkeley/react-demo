@@ -23,6 +23,13 @@ const Welcome = () => (
         to="/todo"
         role="button"
         className="btn btn-success btn-lg">
+        前往待办事项 &gt;
+      </Link>   
+      &nbsp;
+      <Link
+        to="/newtodo"
+        role="button"
+        className="btn btn-success btn-lg">
         前往待办事项(新功能) &gt;
       </Link>
     </p>
